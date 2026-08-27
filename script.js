@@ -116,6 +116,30 @@ if (compteurs.length) {
 
 
 
+
+/* ---------- explorateur de cycles ---------- */
+const explB = document.querySelectorAll('.expl-b');
+if (explB.length) {
+  explB.forEach(b => b.addEventListener('click', () => {
+    explB.forEach(x => x.classList.remove('on'));
+    document.querySelectorAll('.expl-v').forEach(v => v.classList.remove('on'));
+    b.classList.add('on');
+    const vue = document.querySelector(`.expl-v[data-v="${b.dataset.c}"]`);
+    if (vue) vue.classList.add('on');
+  }));
+
+  // navigation au clavier : flèches gauche/droite entre les onglets
+  document.querySelector('.expl-t').addEventListener('keydown', e => {
+    if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+    const liste = [...explB];
+    const i = liste.indexOf(document.activeElement);
+    if (i === -1) return;
+    e.preventDefault();
+    const suivant = liste[(i + (e.key === 'ArrowRight' ? 1 : -1) + liste.length) % liste.length];
+    suivant.focus(); suivant.click();
+  });
+}
+
 /* ---------- liste numérotée : révélation en cascade ---------- */
 const lignesNum = document.querySelectorAll('.num-i');
 if (lignesNum.length) {

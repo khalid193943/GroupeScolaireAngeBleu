@@ -155,7 +155,7 @@ h1,h2,h3,h4{font-family:var(--titre);font-weight:600;line-height:1.06;letter-spa
 .burger.ouvert span:nth-child(2){opacity:0;}
 .burger.ouvert span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
-@media (max-width:1560px){
+@media (max-width:1140px){
   .nav{
     position:fixed;inset:76px 0 auto;background:var(--papier);
     flex-direction:column;align-items:stretch;gap:0;
@@ -495,3 +495,194 @@ h1,h2,h3,h4{font-family:var(--titre);font-weight:600;line-height:1.06;letter-spa
   .hdr-d .btn .lg{display:none;}
   .hdr-d .btn .sm{display:inline;}
 }
+
+/* =========================================================
+   EXPLORATEUR DE CYCLES — l'élément vivant du site
+   ========================================================= */
+.expl{background:var(--nuit);border-radius:var(--r);overflow:hidden;position:relative;}
+.expl::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 78% 22%, rgba(0,104,186,.42), transparent 48%);}
+.expl > *{position:relative;z-index:2;}
+
+/* la barre de sélection */
+.expl-t{display:flex;border-bottom:1px solid rgba(255,255,255,.14);overflow-x:auto;}
+.expl-b{
+  flex:1;min-width:150px;padding:1.3rem 1.2rem;text-align:start;
+  color:rgba(255,255,255,.5);transition:color .25s,background .25s;position:relative;
+}
+.expl-b:hover{color:rgba(255,255,255,.82);background:rgba(255,255,255,.04);}
+.expl-b.on{color:#fff;background:rgba(255,255,255,.06);}
+.expl-b b{display:block;font-family:var(--titre);font-size:1.14rem;font-weight:600;letter-spacing:-.02em;}
+.expl-b span{display:block;font-size:.78rem;margin-top:.2rem;opacity:.72;}
+.expl-b::after{content:'';position:absolute;bottom:-1px;inset-inline:0;height:3px;
+  background:var(--or);transform:scaleX(0);transform-origin:0 50%;transition:transform .38s cubic-bezier(.16,1,.3,1);}
+.expl-b.on::after{transform:scaleX(1);}
+
+/* le contenu qui change */
+.expl-p{padding:clamp(1.8rem,1.3rem + 2.4vw,3.2rem);}
+.expl-v{display:none;}
+.expl-v.on{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--gap-l);align-items:center;
+  animation:explEntre .55s cubic-bezier(.16,1,.3,1);}
+@media (max-width:900px){.expl-v.on{grid-template-columns:1fr;}}
+@keyframes explEntre{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+.expl-v h3{color:#fff;font-size:clamp(1.4rem,1.15rem + 1.2vw,2rem);margin-bottom:.7rem;}
+.expl-v > div > p{color:rgba(255,255,255,.78);font-size:.96rem;line-height:1.7;}
+.expl-l{display:flex;flex-direction:column;gap:.7rem;margin-top:1.4rem;}
+.expl-i{display:flex;align-items:flex-start;gap:.7rem;font-size:.9rem;color:rgba(255,255,255,.84);line-height:1.55;}
+.expl-i svg{width:17px;height:17px;flex-shrink:0;margin-top:.14rem;color:var(--or);}
+
+.expl-ch{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-top:1.6rem;}
+.expl-c{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:1rem 1.1rem;}
+.expl-c b{display:block;font-family:var(--titre);font-weight:700;font-size:1.6rem;line-height:1;color:var(--or);letter-spacing:-.03em;}
+.expl-c span{display:block;font-size:.79rem;color:rgba(255,255,255,.66);margin-top:.35rem;line-height:1.4;}
+
+.expl-p-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;position:relative;
+  box-shadow:0 30px 64px -28px rgba(0,0,0,.7);}
+.expl-p-img img{width:100%;height:100%;object-fit:cover;}
+.expl-p-img::after{content:'';position:absolute;inset:0;background:linear-gradient(200deg,transparent 58%,rgba(0,39,68,.5));}
+
+@media (prefers-reduced-motion:reduce){.expl-v.on{animation:none;}}
+
+/* =========================================================
+   FRISE DU PARCOURS — CP → BAC, qui se dessine au défilement
+   ========================================================= */
+.parc{position:relative;padding:clamp(1.4rem,1rem + 2vw,2.6rem) 0;}
+.parc-rail{position:absolute;top:calc(clamp(1.4rem,1rem + 2vw,2.6rem) + 30px);
+  inset-inline:6%;height:3px;background:var(--trait);border-radius:3px;overflow:hidden;}
+.parc-rail i{position:absolute;inset:0 100% 0 0;border-radius:3px;
+  background:linear-gradient(90deg,var(--bleu),var(--or));transition:inset-inline-end 2.4s cubic-bezier(.22,1,.36,1);}
+.parc.vue .parc-rail i{inset-inline-end:0;}
+.parc-g{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);position:relative;}
+@media (max-width:880px){.parc-g{grid-template-columns:repeat(2,1fr);gap:2.2rem var(--gap);}.parc-rail{display:none;}}
+@media (max-width:480px){.parc-g{grid-template-columns:1fr;}}
+
+.parc-e{text-align:center;}
+.parc-b{width:62px;height:62px;margin:0 auto 1.1rem;border-radius:14px;display:grid;place-items:center;
+  background:var(--acier);color:var(--bleu);border:3px solid var(--papier);position:relative;
+  transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s,color .3s;}
+.parc-e:hover .parc-b{transform:translateY(-5px);background:var(--bleu);color:#fff;}
+.parc-b svg{width:26px;height:26px;}
+.parc-e.fort .parc-b{background:var(--or);color:var(--nuit);}
+.parc-e h3{font-size:1.02rem;margin-bottom:.3rem;}
+.parc-e p{font-size:.84rem;color:var(--encre-70);line-height:1.5;max-width:24ch;margin-inline:auto;}
+.parc-an{display:block;font-size:.74rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--or);margin-bottom:.3rem;}
+
+/* =========================================================
+   BANDEAU DE CHIFFRES ANIMÉS
+   ========================================================= */
+.anneau{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);}
+@media (max-width:860px){.anneau{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:480px){.anneau{grid-template-columns:1fr;}}
+.ann{text-align:center;}
+.ann-c{position:relative;width:118px;height:118px;margin:0 auto 1rem;}
+.ann-c svg{width:100%;height:100%;transform:rotate(-90deg);}
+.ann-c circle{fill:none;stroke-width:8;stroke-linecap:round;}
+.ann-c .fond{stroke:rgba(255,255,255,.14);}
+.ann-c .trait{stroke:var(--or);stroke-dasharray:326;stroke-dashoffset:326;
+  transition:stroke-dashoffset 1.9s cubic-bezier(.22,1,.36,1);}
+.vue .ann-c .trait{stroke-dashoffset:var(--o,0);}
+.ann-v{position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--titre);font-weight:700;font-size:1.5rem;color:#fff;letter-spacing:-.02em;}
+.ann h3{font-size:.98rem;color:#fff;margin-bottom:.25rem;}
+.ann p{font-size:.83rem;color:rgba(255,255,255,.66);line-height:1.5;max-width:24ch;margin-inline:auto;}
+
+@media (prefers-reduced-motion:reduce){
+  .parc-rail i{inset-inline-end:0;transition:none;}
+  .ann-c .trait{stroke-dashoffset:var(--o,0);transition:none;}
+}
+
+/* =========================================================
+   TÉMOIGNAGES D'ANCIENS
+   ========================================================= */
+.anc-g{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);}
+@media (max-width:900px){.anc-g{grid-template-columns:1fr;}}
+.anc{background:var(--papier);border:1px solid var(--trait);border-radius:var(--r);
+  padding:1.6rem 1.7rem;display:flex;flex-direction:column;
+  transition:border-color .25s,transform .25s,box-shadow .25s;}
+.anc:hover{border-color:var(--bleu);transform:translateY(-4px);box-shadow:0 22px 46px -26px rgba(0,39,68,.32);}
+.anc-q{font-size:.95rem;color:var(--encre-70);line-height:1.7;flex:1;}
+.anc-q::before{content:'“';display:block;font-family:var(--titre);font-size:3rem;line-height:.6;color:var(--or);margin-bottom:.4rem;}
+.anc-p{display:flex;align-items:center;gap:.8rem;margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid var(--trait);}
+.anc-av{width:44px;height:44px;border-radius:10px;flex-shrink:0;display:grid;place-items:center;
+  background:var(--acier);color:var(--bleu);font-weight:800;font-size:1rem;}
+.anc-n b{display:block;font-size:.94rem;font-weight:700;line-height:1.25;}
+.anc-n span{font-size:.81rem;color:var(--encre-45);}
+
+/* =========================================================
+   LES ACTIVITÉS PAR NIVEAU
+   ========================================================= */
+.act-g{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);}
+@media (max-width:900px){.act-g{grid-template-columns:1fr;}}
+.act-col{background:var(--papier);border:1px solid var(--trait);border-radius:var(--r);overflow:hidden;}
+.act-h{background:var(--nuit);color:#fff;padding:1.2rem 1.4rem;}
+.act-h b{display:block;font-family:var(--titre);font-size:1.14rem;font-weight:600;letter-spacing:-.02em;}
+.act-h span{display:block;font-size:.78rem;color:rgba(255,255,255,.62);margin-top:.15rem;}
+.act-l{padding:.5rem;}
+.act-i{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem .9rem;border-radius:8px;
+  font-size:.89rem;color:var(--encre-70);line-height:1.5;transition:background .2s;}
+.act-i:hover{background:var(--acier);}
+.act-i svg{width:16px;height:16px;flex-shrink:0;margin-top:.14rem;color:var(--bleu);}
+.act-i b{color:var(--encre);font-weight:700;}
+
+/* =========================================================
+   RÉUSSITES PAR NIVEAU — chaque cycle a les siennes
+   ========================================================= */
+.niv-g{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);}
+@media (max-width:900px){.niv-g{grid-template-columns:1fr;}}
+.niv{
+  background:var(--papier);border:1px solid var(--trait);border-radius:var(--r);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .25s,transform .25s,box-shadow .25s;
+}
+.niv:hover{border-color:var(--bleu);transform:translateY(-4px);box-shadow:0 22px 46px -26px rgba(0,39,68,.32);}
+.niv-h{padding:1.2rem 1.4rem;border-bottom:1px solid var(--trait);display:flex;align-items:center;justify-content:space-between;gap:.8rem;}
+.niv-h b{font-family:var(--titre);font-size:1.14rem;font-weight:600;color:var(--nuit);letter-spacing:-.02em;}
+.niv-h span{font-size:.75rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  background:var(--acier);color:var(--bleu);padding:.24rem .65rem;border-radius:var(--r-pill);white-space:nowrap;}
+.niv-l{padding:.5rem;flex:1;}
+.niv-i{display:flex;align-items:flex-start;gap:.75rem;padding:.8rem .9rem;border-radius:8px;transition:background .2s;}
+.niv-i:hover{background:var(--acier);}
+.niv-n{font-family:var(--titre);font-weight:700;font-size:1.25rem;line-height:1.1;color:var(--or);
+  letter-spacing:-.03em;min-width:3.4ch;flex-shrink:0;}
+.niv-t{font-size:.87rem;color:var(--encre-70);line-height:1.5;}
+.niv-t b{display:block;color:var(--encre);font-weight:700;font-size:.9rem;margin-bottom:.1rem;}
+
+/* =========================================================
+   LES FONDATEURS — des enseignants, pas des gestionnaires
+   ========================================================= */
+.fond{
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--gap-l);align-items:center;
+  background:var(--nuit);border-radius:var(--r);color:#fff;position:relative;overflow:hidden;
+  padding:clamp(1.8rem,1.3rem + 2.6vw,3.4rem);
+}
+.fond::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 84% 24%, rgba(242,180,65,.2), transparent 46%);}
+.fond > *{position:relative;z-index:2;}
+@media (max-width:880px){.fond{grid-template-columns:1fr;text-align:center;}}
+.fond-p{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:rgba(255,255,255,.08);
+  box-shadow:0 30px 64px -28px rgba(0,0,0,.65);}
+.fond-p img{width:100%;height:100%;object-fit:cover;}
+.fond-q{font-family:var(--titre);font-weight:600;font-size:clamp(1.25rem,1rem + 1.5vw,2rem);
+  line-height:1.35;letter-spacing:-.022em;color:#fff;}
+.fond-q::before{content:'“';color:var(--or);font-size:1.5em;line-height:0;vertical-align:-.26em;margin-inline-end:.05em;}
+.fond p{color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.72;margin-top:1.2rem;max-width:58ch;}
+@media (max-width:880px){.fond p{margin-inline:auto;}}
+.fond-sig{display:flex;align-items:center;gap:1rem;margin-top:1.8rem;}
+@media (max-width:880px){.fond-sig{justify-content:center;}}
+.fond-sig i{width:44px;height:2px;background:var(--or);flex-shrink:0;}
+.fond-sig b{display:block;font-family:var(--titre);font-size:1.04rem;font-weight:600;color:#fff;}
+.fond-sig span{font-size:.84rem;color:rgba(255,255,255,.64);}
+
+/* petite bande vers la maternelle */
+.mat{
+  display:flex;align-items:center;gap:clamp(1rem,.8rem + 1.4vw,2rem);flex-wrap:wrap;
+  background:var(--acier);border:1px solid var(--trait);border-inline-start:4px solid var(--or);
+  border-radius:var(--r);padding:1.3rem 1.6rem;
+}
+.mat-ic{width:48px;height:48px;border-radius:10px;background:var(--papier);color:var(--bleu);
+  display:grid;place-items:center;flex-shrink:0;}
+.mat-ic svg{width:22px;height:22px;}
+.mat-t{flex:1;min-width:220px;}
+.mat-t b{display:block;font-family:var(--titre);font-size:1.06rem;font-weight:600;color:var(--nuit);margin-bottom:.15rem;}
+.mat-t span{font-size:.89rem;color:var(--encre-70);line-height:1.55;}
