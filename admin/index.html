@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr-MA">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Administration — Groupe Scolaire L'Ange Bleu</title>
+<link rel="icon" href="../images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- ================= CONNEXION ================= -->
+<div class="gate" id="gate">
+  <div class="gate-c">
+    <div class="gate-logo">
+      <img src="../images/logo.png" alt="">
+      <span><b>L'Ange Bleu</b><span>Administration</span></span>
+    </div>
+
+    <h1>Bienvenue</h1>
+    <p>Connectez-vous pour consulter les messages, les demandes d'inscription et publier vos actualités.</p>
+
+    <div class="champ">
+      <label for="mail">Adresse email</label>
+      <input type="email" id="mail" autocomplete="username" placeholder="direction@angebleu.ma">
+    </div>
+    <div class="champ">
+      <label for="mdp">Mot de passe</label>
+      <input type="password" id="mdp" autocomplete="current-password" placeholder="••••••••••">
+    </div>
+
+    <button class="btn btn-or btn-plein" id="btnEntrer">Entrer
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+    <div class="gate-err" id="gateErr">Email ou mot de passe incorrect.</div>
+
+    <div class="gate-demo">
+      <b>Accès de démonstration</b>
+      Email&nbsp;: <code>direction@angebleu.ma</code><br>
+      Mot de passe&nbsp;: <code>AngeBleu#1986</code>
+    </div>
+  </div>
+</div>
+
+<!-- ================= APPLICATION ================= -->
+<div class="app" id="app">
+
+  <header class="tete">
+    <div class="wrap">
+      <div class="tete-l">
+        <img src="../images/logo.png" alt="">
+        <span><b>L'Ange Bleu</b><span>Administration</span></span>
+      </div>
+      <div class="tete-r">
+        <a href="../index.html" class="ic-b" title="Voir le site" aria-label="Voir le site">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg></a>
+        <button class="ic-b" id="btnExport" title="Exporter mes données" aria-label="Exporter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg></button>
+        <button class="ic-b" id="btnSortir" title="Se déconnecter" aria-label="Se déconnecter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="onglets">
+    <div class="wrap">
+      <button class="onglet on" data-t="msg">Messages <span class="pill" id="pMsg">0</span></button>
+      <button class="onglet" data-t="ins">Inscriptions <span class="pill" id="pIns">0</span></button>
+      <button class="onglet" data-t="news">Actualités <span class="pill" id="pNews">0</span></button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+
+      <p class="note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+        <span><b>Version de démonstration.</b> Les données sont enregistrées dans ce navigateur uniquement. Sur la version définitive, elles seront stockées sur un serveur et accessibles depuis n'importe quel appareil.</span>
+      </p>
+
+      <!-- ---------- MESSAGES ---------- -->
+      <section class="panneau on" data-p="msg">
+        <div class="stats">
+          <div class="stat or"><b id="sMsgNeuf">0</b><span>Non lus</span></div>
+          <div class="stat"><b id="sMsgTot">0</b><span>Messages reçus</span></div>
+          <div class="stat"><b id="sMsgSem">0</b><span>Cette semaine</span></div>
+          <div class="stat vert"><b id="sMsgRep">0</b><span>Traités</span></div>
+        </div>
+
+        <div class="outils">
+          <input type="search" id="qMsg" placeholder="Rechercher un nom, un email, un mot…">
+          <select id="fMsg">
+            <option value="">Tous</option>
+            <option value="nouveau">Non lus</option>
+            <option value="lu">Traités</option>
+          </select>
+        </div>
+
+        <div class="liste" id="lMsg"></div>
+        <div class="vide" id="vMsg" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 8 8 5 8-5"/></svg>
+          <p>Aucun message pour l'instant. Ceux envoyés depuis le formulaire de contact du site apparaîtront ici.</p>
+        </div>
+      </section>
+
+      <!-- ---------- INSCRIPTIONS ---------- -->
+      <section class="panneau" data-p="ins">
+        <div class="stats">
+          <div class="stat or"><b id="sInsNeuf">0</b><span>À traiter</span></div>
+          <div class="stat"><b id="sInsTot">0</b><span>Demandes reçues</span></div>
+          <div class="stat"><b id="sInsCont">0</b><span>Familles contactées</span></div>
+          <div class="stat vert"><b id="sInsOk">0</b><span>Inscriptions confirmées</span></div>
+        </div>
+
+        <div class="outils">
+          <input type="search" id="qIns" placeholder="Rechercher un enfant, un parent…">
+          <select id="fInsSec">
+            <option value="">Toutes les sections</option>
+            <option>1re année primaire</option>
+            <option>Collège</option>
+            <option>Lycée</option>
+            <option>Autre niveau</option>
+          </select>
+          <select id="fIns">
+            <option value="">Tous les statuts</option>
+            <option value="nouveau">À traiter</option>
+            <option value="contacte">Contactée</option>
+            <option value="inscrit">Inscrite</option>
+            <option value="refus">Sans suite</option>
+          </select>
+        </div>
+
+        <div class="liste" id="lIns"></div>
+        <div class="vide" id="vIns" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h11l3 3v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 9h8M8 13h6"/></svg>
+          <p>Aucune demande d'inscription. Celles envoyées depuis la page Inscription apparaîtront ici.</p>
+        </div>
+      </section>
+
+      <!-- ---------- ACTUALITÉS ---------- -->
+      <section class="panneau" data-p="news">
+        <div class="outils">
+          <input type="search" id="qNews" placeholder="Rechercher une actualité…">
+          <button class="btn btn-or pousse" id="btnNews">+ Publier une actualité</button>
+        </div>
+
+        <div class="liste" id="lNews"></div>
+        <div class="vide" id="vNews" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+          <p>Aucune actualité publiée. Racontez la sortie scolaire, la fête de fin d'année, l'ouverture des inscriptions…</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- ================= FENÊTRE ACTUALITÉ ================= -->
+<div class="voile" id="boiteNews" hidden>
+  <div class="boite">
+    <button class="boite-x" id="newsX" aria-label="Fermer">&times;</button>
+    <h2 id="newsTitre">Publier une actualité</h2>
+    <input type="hidden" id="newsId">
+
+    <div class="champ">
+      <label for="nTitre">Titre</label>
+      <input type="text" id="nTitre" placeholder="La sortie à la ferme des moyennes sections">
+    </div>
+    <div class="champ">
+      <label for="nCat">Catégorie</label>
+      <select id="nCat">
+        <option>Événement</option><option>Vie de l'école</option>
+        <option>Inscriptions</option><option>Sortie scolaire</option><option>Information</option>
+      </select>
+    </div>
+    <div class="champ">
+      <label for="nDate">Date affichée</label>
+      <input type="text" id="nDate" placeholder="Mai 2026">
+    </div>
+    <div class="champ">
+      <label for="nTxt">Texte</label>
+      <textarea id="nTxt" rows="5" placeholder="Racontez en quelques phrases. Les parents lisent surtout les deux premières lignes."></textarea>
+    </div>
+
+    <div class="boite-a">
+      <button class="btn btn-or" id="newsOk">Publier</button>
+      <button class="btn btn-ligne" id="newsAnnul">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
