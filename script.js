@@ -117,27 +117,68 @@ if (compteurs.length) {
 
 
 
-/* ---------- explorateur de cycles ---------- */
-const explB = document.querySelectorAll('.expl-b');
-if (explB.length) {
-  explB.forEach(b => b.addEventListener('click', () => {
-    explB.forEach(x => x.classList.remove('on'));
-    document.querySelectorAll('.expl-v').forEach(v => v.classList.remove('on'));
-    b.classList.add('on');
-    const vue = document.querySelector(`.expl-v[data-v="${b.dataset.c}"]`);
-    if (vue) vue.classList.add('on');
-  }));
 
-  // navigation au clavier : flèches gauche/droite entre les onglets
-  document.querySelector('.expl-t').addEventListener('keydown', e => {
-    if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
-    const liste = [...explB];
-    const i = liste.indexOf(document.activeElement);
-    if (i === -1) return;
-    e.preventDefault();
-    const suivant = liste[(i + (e.key === 'ArrowRight' ? 1 : -1) + liste.length) % liste.length];
-    suivant.focus(); suivant.click();
-  });
+
+/* ---------- parallaxe des bandes photo ----------
+   L'image se déplace plus lentement que la page. On borne le
+   décalage pour qu'aucun bord blanc n'apparaisse. */
+const bandes = document.querySelectorAll('.plein-img');
+if (bandes.length && !REDUIT) {
+  let enCours = false;
+  const bouger = () => {
+    bandes.forEach(b => {
+      const s = b.parentElement.getBoundingClientRect();
+      if (s.bottom < -200 || s.top > innerHeight + 200) return;
+      const avance = (s.top + s.height / 2 - innerHeight / 2) / innerHeight;
+      const d = Math.max(-1, Math.min(1, avance)) * 7;
+      b.style.transform = `translate3d(0, ${d.toFixed(2)}%, 0)`;
+    });
+    enCours = false;
+  };
+  addEventListener('scroll', () => {
+    if (!enCours) { enCours = true; requestAnimationFrame(bouger); }
+  }, { passive: true });
+  bouger();
+}
+
+/* ---------- section collante : la photo suit le texte ---------- */
+const colle = document.getElementById('colle');
+if (colle) {
+  const etapes = colle.querySelectorAll('.colle-e');
+  const photos = colle.querySelectorAll('.colle-p img');
+  const num = document.getElementById('colleN');
+
+  if (REDUIT || !('IntersectionObserver' in window)) {
+    etapes.forEach(e => e.classList.add('actif'));
+  } else {
+    const obsC = new IntersectionObserver((entrees) => {
+      entrees.forEach(e => {
+        if (!e.isIntersecting) return;
+        const i = e.target.dataset.e;
+        etapes.forEach(x => x.classList.toggle('actif', x.dataset.e === i));
+        photos.forEach(x => x.classList.toggle('on', x.dataset.e === i));
+        if (num) num.textContent = '0' + (Number(i) + 1);
+      });
+    }, { threshold: 0, rootMargin: '-48% 0px -48%' });
+    etapes.forEach(e => obsC.observe(e));
+  }
+}
+
+/* ---------- sections en deux moitiés : la photo se dévoile ---------- */
+const moities = document.querySelectorAll('[data-moit]');
+if (moities.length) {
+  if (REDUIT || !('IntersectionObserver' in window)) {
+    moities.forEach(m => m.classList.add('vue'));
+  } else {
+    const obsM = new IntersectionObserver((entrees) => {
+      entrees.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('vue');
+        obsM.unobserve(e.target);
+      });
+    }, { threshold: 0.25 });
+    moities.forEach(m => obsM.observe(m));
+  }
 }
 
 /* ---------- liste numérotée : révélation en cascade ---------- */
