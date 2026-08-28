@@ -119,6 +119,68 @@ if (compteurs.length) {
 
 
 
+
+
+/* ---------- carrousel du hero ----------
+   Les diapositives avancent seules. Un clic sur un trait
+   permet d'aller directement à celle qu'on veut. */
+const heroS = document.getElementById('heroS');
+if (heroS) {
+  const photos = heroS.querySelectorAll('.heroS-p img');
+  const textes = heroS.querySelectorAll('.heroS-t > div');
+  const traits = heroS.querySelectorAll('.heroS-b');
+  const num = document.getElementById('heroSNum');
+  const DUREE = 7000;
+  let i = 0, minuterie = null;
+
+  const montrer = (k) => {
+    i = (k + photos.length) % photos.length;
+    photos.forEach(p => p.classList.toggle('on', +p.dataset.s === i));
+    textes.forEach(t => t.classList.toggle('on', +t.dataset.s === i));
+    traits.forEach(t => {
+      const actif = +t.dataset.s === i;
+      t.classList.remove('on');
+      if (actif) { void t.offsetWidth; t.classList.add('on'); }  // relance l'animation du trait
+    });
+    if (num) num.textContent = `0${i + 1} / 0${photos.length}`;
+  };
+
+  const lancer = () => {
+    if (REDUIT) return;
+    clearInterval(minuterie);
+    minuterie = setInterval(() => montrer(i + 1), DUREE);
+  };
+
+  traits.forEach(t => t.addEventListener('click', () => { montrer(+t.dataset.s); lancer(); }));
+
+  // on met en pause quand le hero sort de l'écran : inutile de tourner dans le vide
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) lancer(); else clearInterval(minuterie);
+    }, { threshold: 0.2 }).observe(heroS);
+  } else lancer();
+
+  heroS.style.setProperty('--d', DUREE + 'ms');
+  lancer();
+}
+
+/* ---------- galeries : les vignettes montent une par une ---------- */
+const galeries = document.querySelectorAll('.gal-h');
+if (galeries.length) {
+  if (REDUIT || !('IntersectionObserver' in window)) {
+    galeries.forEach(g => g.classList.add('vue'));
+  } else {
+    const obsG = new IntersectionObserver((entrees) => {
+      entrees.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('vue');
+        obsG.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    galeries.forEach(g => obsG.observe(g));
+  }
+}
+
 /* ---------- parallaxe des bandes photo ----------
    L'image se déplace plus lentement que la page. On borne le
    décalage pour qu'aucun bord blanc n'apparaisse. */
