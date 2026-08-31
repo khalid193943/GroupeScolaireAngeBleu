@@ -282,6 +282,38 @@ function versAdmin(form) {
   try { localStorage.setItem(cle, JSON.stringify(liste)); } catch (_) {}
 }
 
+
+/* ---------- barres des blocs de chiffres et frises ----------
+   Le filet doré se remplit quand le bloc entre à l'écran. */
+const aRemplir = document.querySelectorAll('.stat-c, .frise');
+if (aRemplir.length) {
+  if (REDUIT || !('IntersectionObserver' in window)) {
+    aRemplir.forEach(e => e.classList.add('vue'));
+  } else {
+    const obsR = new IntersectionObserver((entrees) => {
+      entrees.forEach((e, i) => {
+        if (!e.isIntersecting) return;
+        setTimeout(() => e.target.classList.add('vue'), i * 90);
+        obsR.unobserve(e.target);
+      });
+    }, { threshold: 0.3 });
+    aRemplir.forEach(e => obsR.observe(e));
+  }
+}
+
+/* les illustrations se dessinent aussi à l'entrée à l'écran */
+const cartesIll = document.querySelectorAll('.disc-c');
+if (cartesIll.length && !REDUIT && 'IntersectionObserver' in window) {
+  const obsI = new IntersectionObserver((entrees) => {
+    entrees.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('vue');
+      obsI.unobserve(e.target);
+    });
+  }, { threshold: 0.4 });
+  cartesIll.forEach(e => obsI.observe(e));
+}
+
 /* ---------- formulaires ----------
    Envoi vers Netlify Forms. En cas d'échec, on le dit
    honnêtement plutôt que d'afficher une fausse confirmation. */
