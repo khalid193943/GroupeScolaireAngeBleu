@@ -958,3 +958,68 @@ b [data-compte],
   line-height:inherit;
   letter-spacing:inherit;
 }
+
+/* le vrai logo : l'emblème a une marge blanche interne */
+.logo img{object-fit:contain;}
+.ft .logo img{filter:brightness(1.9) saturate(.5);}
+
+/* ---------- renvoi vers la maternelle ---------- */
+.mat{
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  border-radius:20px;overflow:hidden;background:var(--papier);
+  border:1px solid var(--trait);
+}
+@media (max-width:880px){.mat{grid-template-columns:1fr;}}
+.mat-p{position:relative;overflow:hidden;aspect-ratio:16/11;background:var(--bleu-ciel);}
+@media (max-width:880px){.mat-p{aspect-ratio:16/9;}}
+.mat-p img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+.mat:hover .mat-p img{transform:scale(1.05);}
+.mat-b{padding:clamp(1.8rem,1.4rem + 2.4vw,3.2rem);}
+.mat-r{display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--or);color:var(--bleu-encre);border-radius:var(--r-pilule);
+  padding:.36rem 1rem;font-size:.76rem;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;margin-bottom:1rem;}
+.mat-b h2{font-size:clamp(1.4rem,1.2rem + 1.4vw,2.1rem);margin-bottom:.9rem;}
+.mat-b > p{font-size:.98rem;color:var(--encre-70);line-height:1.72;max-width:46ch;}
+.mat-l{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.3rem 0 1.7rem;}
+.mat-l span{background:var(--craie);border:1px solid var(--trait);
+  border-radius:var(--r-pilule);padding:.36rem .9rem;font-size:.83rem;
+  font-weight:600;color:var(--encre-70);}
+
+/* ---------- horaires du transport et de la cantine ---------- */
+.hr-l{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.2rem;}
+.hr-l span{display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+  border-radius:var(--r-pilule);padding:.34rem .9rem;
+  font-size:.82rem;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;}
+
+/* ---------- carrousel mobile ---------- */
+@media (max-width:760px){
+  .carr{
+    display:flex !important;grid-template-columns:none !important;
+    overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    gap:.9rem;margin-inline:calc(var(--marge,1.1rem) * -1);
+    padding-inline:var(--marge,1.1rem);padding-bottom:1.1rem;
+    scroll-padding-inline:var(--marge,1.1rem);scrollbar-width:none;
+  }
+  .carr::-webkit-scrollbar{display:none;}
+  .carr > *{flex:0 0 auto;width:min(78vw,320px);scroll-snap-align:start;margin:0 !important;}
+  .carr.carr-l > *{width:min(86vw,360px);}
+  .carr.carr-s > *{width:min(62vw,250px);}
+}
+.carr-h{display:none;}
+@media (max-width:760px){
+  .carr-h{display:flex;align-items:center;justify-content:center;gap:.45rem;
+    font-size:.78rem;font-weight:700;color:var(--encre-45);
+    margin-top:-.4rem;margin-bottom:.9rem;}
+  .carr-h svg{width:15px;height:15px;color:var(--or);
+    animation:carrPousse 2.4s ease-in-out infinite;}
+}
+@keyframes carrPousse{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+
+/* ---------- respiration sur mobile ---------- */
+@media (max-width:760px){
+  :root{--bande:5.2rem;}
+  .tete-c,.tete-2{margin-bottom:2.5rem;}
+}
+@media (prefers-reduced-motion:reduce){.carr-h svg{animation:none;}}
