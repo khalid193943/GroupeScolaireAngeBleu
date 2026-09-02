@@ -703,3 +703,121 @@ h1,h2,h3,h4{font-family:var(--f-titre);font-weight:560;line-height:1.08;letter-s
   .empil .jeton{left:0;font-size:.9rem}
   .ticker-piste{gap:2rem}
 }
+
+/* =========================================================
+   V4 — CORRECTIFS + SECTIONS DE VALORISATION
+   ========================================================= */
+
+/* ---------- CORRECTIF 1 : respiration du hero ---------- */
+.hero-v .contenu .t-hero{margin-bottom:1.6rem}
+.hero-v .contenu .avant{margin-bottom:1.3rem}
+.hero-p .contenu .t-hero{margin-bottom:1.2rem}
+.hero-p .contenu .avant,.hero-p .contenu .chapitre{margin-bottom:1.1rem}
+.hero-v .wrap{padding-block:9.5rem 3.4rem}
+.t-hero{max-width:16ch}
+.hero-v .chapo,.hero-p .chapo{max-width:52ch}
+
+/* ---------- CORRECTIF 2 : logo du header ---------- */
+.logo img{width:auto;height:46px;max-width:none;filter:none}
+.hdr.plein .logo .l-clair,.hdr:not(.sur-fonce) .logo .l-clair{display:none}
+.hdr.sur-fonce:not(.plein) .logo .l-fonce{display:none}
+.hdr.plein .logo .l-fonce,.hdr:not(.sur-fonce) .logo .l-fonce{display:block}
+.pied .logo img{height:52px}
+
+/* ---------- CORRECTIF 3 : cadrage des images ---------- */
+.gal-i img,.bento img,.mixte img,.cycle img,.photo-r img,.empil img{object-position:center 42%}
+.galerie{grid-auto-rows:minmax(190px,1fr)}
+.empil img{aspect-ratio:4/3;object-fit:cover}
+.empil .sec{aspect-ratio:1/1}
+
+/* ---------- Pastilles / étiquettes ---------- */
+.pastille{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .85rem;border-radius:var(--r-pill);
+  background:var(--ciel);color:var(--bleu);font-size:.78rem;font-weight:650;line-height:1}
+.pastille.or{background:var(--or-fond);color:#8A6414}
+.pastille.nuit{background:rgba(255,255,255,.12);color:var(--or-2)}
+.pastille svg{width:13px;height:13px}
+.pastilles{display:flex;flex-wrap:wrap;gap:.5rem}
+
+/* ---------- Mot du directeur ---------- */
+.vision{position:relative;overflow:hidden;background:var(--nuit)}
+.vision .grille{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--gap-l);align-items:center;
+  padding-block:var(--s-bande);position:relative;z-index:2}
+.vision-p{position:relative;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--ombre-l)}
+.vision-p img{width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:center 35%}
+.vision-p::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,transparent 55%,rgba(6,38,65,.75))}
+.vision-sceau{position:absolute;right:-18px;bottom:-18px;width:132px;height:132px;border-radius:50%;
+  background:var(--or);display:grid;place-items:center;box-shadow:var(--ombre-m);z-index:3;padding:1rem}
+.vision-sceau img{width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+.vision blockquote{font-family:var(--f-titre);font-style:italic;font-weight:470;
+  font-size:clamp(1.4rem,1.05rem + 1.7vw,2.4rem);line-height:1.32;color:#fff;margin-bottom:1.5rem}
+.vision blockquote::before{content:'« '}.vision blockquote::after{content:' »'}
+.vision .signature{display:flex;align-items:center;gap:1rem;margin-top:2rem;
+  padding-top:1.5rem;border-top:1px solid var(--trait-nuit)}
+.vision .signature b{display:block;color:#fff;font-size:1.05rem}
+.vision .signature span{font-size:.88rem;color:var(--blanc-50)}
+.vision .piliers{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.vision .pilier{border-left:2px solid var(--or);padding-left:.9rem}
+.vision .pilier b{display:block;font-family:var(--f-titre);color:var(--or-2);font-size:1.5rem;line-height:1}
+.vision .pilier span{font-size:.85rem;color:var(--blanc-70);display:block;margin-top:.3rem;line-height:1.4}
+
+/* ---------- Innovation / nouvelle génération ---------- */
+.innov{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+.innov-c{position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:300px;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;color:#fff;
+  background:var(--nuit-2);transition:translate var(--vite),box-shadow var(--vite)}
+.innov-c:hover{translate:0 -6px;box-shadow:var(--ombre-l)}
+.innov-c img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.42;transition:opacity var(--vite),scale .9s cubic-bezier(.22,1,.36,1)}
+.innov-c:hover img{opacity:.55;scale:1.06}
+.innov-c::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,38,65,.25),rgba(6,38,65,.92))}
+.innov-c > *{position:relative;z-index:2}
+.innov-ic{width:46px;height:46px;border-radius:12px;background:rgba(227,167,47,.2);
+  color:var(--or-2);display:grid;place-items:center;margin-bottom:auto}
+.innov-ic svg{width:23px;height:23px}
+.innov-c h3{font-size:1.18rem;margin:1.2rem 0 .4rem}
+.innov-c p{font-size:.89rem;color:var(--blanc-70);line-height:1.5}
+
+/* ---------- Compétitions / distinctions ---------- */
+.compets{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.compet{background:var(--blanc);border:1px solid var(--trait);border-radius:var(--r-xl);
+  padding:1.8rem;position:relative;overflow:hidden;transition:var(--vite)}
+.compet:hover{translate:0 -6px;box-shadow:var(--ombre-m);border-color:transparent}
+.compet::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--bleu),var(--or))}
+.compet .medaille{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;
+  background:var(--or-fond);color:var(--or);margin-bottom:1.1rem}
+.compet .medaille svg{width:25px;height:25px}
+.compet h3{font-size:1.14rem;margin-bottom:.4rem}
+.compet p{font-size:.92rem;color:var(--encre-70);line-height:1.55}
+.compet .quand{display:block;margin-top:.9rem;font-size:.8rem;font-weight:650;color:var(--bleu)}
+
+/* ---------- Bande photo pleine largeur ---------- */
+.bande-photo{position:relative;min-height:56svh;display:flex;align-items:center;overflow:hidden;background:var(--nuit)}
+.bande-photo > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
+.bande-photo::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(6,38,65,.92) 8%,rgba(6,38,65,.35) 75%)}
+.bande-photo .wrap{padding-block:var(--s-bande);color:#fff}
+.bande-photo .contenu{max-width:620px}
+
+/* ---------- Frise de distinctions ---------- */
+.palmes{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--trait-nuit)}
+.palme{background:var(--nuit);padding:1.8rem 1.2rem;text-align:center;transition:background var(--vite)}
+.palme:hover{background:var(--nuit-2)}
+.palme svg{width:26px;height:26px;color:var(--or);margin:0 auto .7rem}
+.palme b{display:block;font-family:var(--f-titre);color:#fff;font-size:1.02rem;line-height:1.25}
+.palme span{display:block;margin-top:.35rem;font-size:.8rem;color:var(--blanc-50)}
+
+@media (max-width:1080px){
+  .innov{grid-template-columns:1fr 1fr}
+  .compets{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .vision .grille{grid-template-columns:1fr}
+  .vision-sceau{width:96px;height:96px;right:-8px;bottom:-8px}
+}
+@media (max-width:640px){
+  .innov,.compets{grid-template-columns:1fr}
+  .vision .piliers{grid-template-columns:1fr;gap:.9rem}
+  .logo img{height:38px}
+  .hero-v .wrap{padding-block:7.5rem 2.6rem}
+}

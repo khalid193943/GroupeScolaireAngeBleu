@@ -54,6 +54,11 @@
   /* ---------- Compteurs animés ---------- */
   const compteurs = $$('[data-compte]');
   if (compteurs.length) {
+    /* valeur finale écrite par défaut : si JS échoue ou capture d'écran, le chiffre est juste */
+    compteurs.forEach(el => {
+      const fin = parseFloat(el.dataset.compte);
+      el.textContent = fin + (el.dataset.suffixe || '');
+    });
     const ioC = new IntersectionObserver((entrees) => {
       entrees.forEach(e => {
         if (!e.isIntersecting) return;
@@ -61,7 +66,7 @@
         const el = e.target, fin = parseFloat(el.dataset.compte);
         const suffixe = el.dataset.suffixe || '';
         if (reduit) { el.textContent = fin + suffixe; return; }
-        const debut = performance.now(), duree = 1600;
+        const debut = performance.now(), duree = 1500;
         (function tic (t) {
           const p = Math.min((t - debut) / duree, 1);
           const ease = 1 - Math.pow(1 - p, 3);
