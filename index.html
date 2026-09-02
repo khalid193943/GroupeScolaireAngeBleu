@@ -64,22 +64,19 @@
   </div>
 </header>
 <main id="main">
-<!-- ═════════ 1 · HERO — vidéo de fond avec repli Ken Burns ═════════ -->
+<!-- ═════════ 1 · HERO — vidéo de fond, repli Ken Burns ═════════ -->
 <section class="hero-v">
   <div class="fond" aria-hidden="true">
-    <!-- Remplacez la source par la vidéo de l'établissement (Cloudinary : .mp4). Si elle ne charge pas, le diaporama Ken Burns prend le relais automatiquement. -->
-    <video id="hero-video" autoplay muted loop playsinline
-           poster="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201548/4a37c00d-dc2e-4907-b6f9-a95d3c61276c.png">
+    <video id="hero-video" autoplay muted loop playsinline poster="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1787837816/bf5e55a8-6c3d-4c98-8edc-a15b2875cccf.png">
       <source src="https://res.cloudinary.com/ddvgp1zrz/video/upload/ange-bleu-hero.mp4" type="video/mp4">
     </video>
     <div class="kb" id="kb">
+      <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1787837816/bf5e55a8-6c3d-4c98-8edc-a15b2875cccf.png" alt="">
+      <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201280/2be10907-e431-4ed4-85a0-8b395452e3a0.png" alt="">
       <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201548/4a37c00d-dc2e-4907-b6f9-a95d3c61276c.png" alt="">
-      <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201411/cdfe3fdf-5d1b-491f-9449-cbb41ae2ce5e.png" alt="">
-      <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201490/c2e1c2cc-2c14-4524-971c-781ab745c13b.png" alt="">
     </div>
     <div class="voile"></div>
   </div>
-
   <div class="wrap">
     <div class="contenu hero-charge">
       <p class="avant sur-nuit">El Jadida · depuis 1986</p>
@@ -90,7 +87,6 @@
         <a href="primaire.html" class="btn btn-ligne-clair">Découvrir les cycles</a>
       </div>
     </div>
-
     <div class="hero-bas">
       <div class="hero-marq">
         <span><b>2×</b> premiers du Maroc</span>
@@ -98,41 +94,59 @@
         <span><b>40</b> ans d'expérience</span>
         <span><b>3</b> langues enseignées</span>
       </div>
-      <a href="#confiance" class="fleche-bas" aria-label="Descendre">Découvrir
+      <a href="#promesse" class="fleche-bas" aria-label="Descendre">Découvrir
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ═════════ 2 · BANDE DE CONFIANCE — compteurs animés ═════════ -->
-<section class="fond-nuit" id="confiance">
-  <div class="chiffres" data-cascade>
-    <div class="chiffre"><b><span data-compte="40">0</span> ans</b><span>au même endroit, depuis 1986</span></div>
-    <div class="chiffre"><b><span data-compte="100" data-suffixe="%">0</span></b><span>de réussite au baccalauréat</span></div>
-    <div class="chiffre"><b><span data-compte="2" data-suffixe="×">0</span></b><span>premiers au niveau national — 2015 et 2025</span></div>
-    <div class="chiffre"><b><span data-compte="12">0</span> années</b><span>de scolarité sous un même toit</span></div>
+<!-- ═════════ 2 · BANDEAU DÉFILANT ═════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-piste">
+    <span><b>1986</b> année de fondation</span><span><b>Trilingue</b> arabe · français · anglais</span>
+    <span><b>2015</b> premiers du Maroc</span><span><b>12</b> niveaux sous un même toit</span>
+    <span><b>2025</b> premiers du Maroc, encore</span><span><b>100%</b> de réussite au baccalauréat</span>
+    <span><b>1986</b> année de fondation</span><span><b>Trilingue</b> arabe · français · anglais</span>
+    <span><b>2015</b> premiers du Maroc</span><span><b>12</b> niveaux sous un même toit</span>
+    <span><b>2025</b> premiers du Maroc, encore</span><span><b>100%</b> de réussite au baccalauréat</span>
+  </div>
+</div>
+
+<!-- ═════════ 3 · LA PROMESSE — split éditorial + images empilées ═════════ -->
+<section class="bande" id="promesse">
+  <div class="wrap">
+    <div class="edito">
+      <div class="rv gauche">
+        <p class="edito-num">12<small>années de scolarité dans le même établissement, avec les mêmes exigences, du premier alphabet au dernier oral du baccalauréat.</small></p>
+      </div>
+      <div class="rv droite">
+        <p class="avant">Ce que « groupe scolaire » veut dire ici</p>
+        <h2 class="t-sec">Une école qui ne vous<br><span class="em-bleu">rend jamais à quelqu'un d'autre.</span></h2>
+        <p class="chapo" style="margin-top:1.1rem">Dans la plupart des parcours, un enfant change trois fois d'établissement avant le bac. Trois fois des méthodes différentes, des exigences qui varient, des professeurs qui repartent de zéro parce qu'ils ne savent pas ce qui a été fait avant.</p>
+        <p class="chapo" style="margin-top:.9rem">Chez nous, l'enseignant de 3<sup>e</sup> année collège sait ce qui s'est enseigné en CE2 — et le professeur de terminale sait exactement ce que l'élève a travaillé six ans plus tôt. C'est la seule raison pour laquelle nos résultats tiennent sur la durée.</p>
+        <a href="etablissement.html" class="lien-fl" style="margin-top:1.4rem">Notre histoire depuis 1986 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ═════════ 3 · LES TROIS CYCLES — chapitres d'un même livre ═════════ -->
-<section class="bande">
+<!-- ═════════ 4 · LES TROIS CYCLES ═════════ -->
+<section class="bande fond-ciel">
   <div class="wrap">
-    <div class="tete-flex rv">
-      <div>
-        <p class="avant">Un parcours en trois chapitres</p>
-        <h2 class="t-sec">Douze années,<br><span class="em-bleu">une seule maison.</span></h2>
+    <div class="tete-trait rv">
+      <div class="rang">
+        <h2 class="t-sec">Un parcours<br><span class="em-bleu">en trois chapitres</span></h2>
+        <p class="chapo" style="max-width:40ch">Chaque cycle prépare le suivant. L'élève qui entre en 1<sup>re</sup> année primaire est déjà, à nos yeux, le bachelier de dans douze ans.</p>
       </div>
-      <p class="chapo">Chaque cycle prépare le suivant. L'élève qui entre en 1<sup>re</sup> année primaire est déjà, à nos yeux, le bachelier de dans douze ans.</p>
     </div>
-
     <div class="cycles" data-cascade>
       <a href="primaire.html" class="cycle">
         <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201411/cdfe3fdf-5d1b-491f-9449-cbb41ae2ce5e.png" alt="Élèves du primaire en classe" loading="lazy">
         <div class="cycle-c">
-          <span class="cycle-ch">Chapitre I</span>
+          <span class="cycle-ch">Chapitre I · 6 à 12 ans</span>
           <h3>Primaire</h3>
-          <small>6 à 12 ans · 6 niveaux</small>
+          <small>Six niveaux · les fondations</small>
           <p>Lire sans buter, écrire sans y penser, calculer de tête. Ce qui s'installe ici ne se rattrape jamais complètement ailleurs.</p>
           <span class="lien-fl">Découvrir le primaire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
@@ -140,9 +154,9 @@
       <a href="college.html" class="cycle">
         <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201490/c2e1c2cc-2c14-4524-971c-781ab745c13b.png" alt="Collégiens en laboratoire" loading="lazy">
         <div class="cycle-c">
-          <span class="cycle-ch">Chapitre II</span>
+          <span class="cycle-ch">Chapitre II · 12 à 15 ans</span>
           <h3>Collège</h3>
-          <small>12 à 15 ans · 3 niveaux</small>
+          <small>Trois niveaux · la méthode</small>
           <p>L'âge où l'on décide sans le savoir. Trois années où un élève prend ses méthodes — ou les perd. Ici, on les prend.</p>
           <span class="lien-fl">Découvrir le collège <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
@@ -150,9 +164,9 @@
       <a href="lycee.html" class="cycle">
         <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201548/4a37c00d-dc2e-4907-b6f9-a95d3c61276c.png" alt="Lycéens de L'Ange Bleu" loading="lazy">
         <div class="cycle-c">
-          <span class="cycle-ch">Chapitre III</span>
+          <span class="cycle-ch">Chapitre III · 15 à 18 ans</span>
           <h3>Lycée</h3>
-          <small>15 à 18 ans · sciences et lettres</small>
+          <small>Sciences et lettres · le bac</small>
           <p>Premiers du Maroc, deux fois. Ce n'est pas un hasard de promotion : c'est douze ans de travail qui aboutissent.</p>
           <span class="lien-fl">Découvrir le lycée <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
@@ -161,81 +175,85 @@
   </div>
 </section>
 
-<!-- ═════════ 4 · POURQUOI L'ANGE BLEU — quatre raisons ═════════ -->
-<section class="bande fond-ciel">
+<!-- ═════════ 5 · QUATRE RAISONS — liste numérotée + colonne collante ═════════ -->
+<section class="bande">
   <div class="wrap">
-    <div class="tete-sec centre rv">
-      <p class="avant">Ce qu'on ne trouve dans aucune brochure</p>
-      <h2 class="t-sec">Quatre raisons de <span class="em-bleu">nous confier votre enfant</span></h2>
-    </div>
-    <div class="raisons" data-cascade>
-      <article class="raison">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M7 10.5V16c0 1.5 2.2 3 5 3s5-1.5 5-3v-5.5"/></svg></span>
-        <div>
-          <h3>Un seul projet pédagogique, douze ans</h3>
-          <p>Pas de rupture entre les cycles : les enseignants du collège savent ce qui s'est fait au primaire, ceux du lycée construisent sur le collège. L'élève n'a jamais à recommencer.</p>
+    <div class="collant">
+      <div class="collant-g rv gauche">
+        <p class="avant">Ce qu'on ne trouve dans aucune brochure</p>
+        <h2 class="t-sec">Quatre raisons de nous<br><span class="em-bleu">confier votre enfant</span></h2>
+        <p class="chapo" style="margin-top:1rem">Aucune n'est spectaculaire. Toutes se vérifient en une visite d'une heure.</p>
+        <div class="empil" style="margin-top:2.2rem">
+          <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201411/cdfe3fdf-5d1b-491f-9449-cbb41ae2ce5e.png" alt="Salle de classe" loading="lazy">
+          <img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201294/bab2d56e-e96f-49a9-a6e3-913fe170412f.png" alt="Bibliothèque" class="sec" loading="lazy">
         </div>
-      </article>
-      <article class="raison">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a1 1 0 0 1 1-1h6v16H5a1 1 0 0 1-1-1z"/><path d="M20 19V5a1 1 0 0 0-1-1h-6v16h6a1 1 0 0 0 1-1z"/></svg></span>
-        <div>
-          <h3>Trois langues, pour de vrai</h3>
-          <p>Arabe, français et anglais dès le primaire — non pas comme matières décoratives, mais comme langues de travail. Nos bacheliers étudient ensuite dans les trois.</p>
+      </div>
+      <div class="collant-d rv droite">
+        <div class="numeros">
+          <article class="numero"><span class="n">I</span><div><h3>Un seul projet pédagogique, douze ans</h3><p>Pas de rupture entre les cycles. Les enseignants du collège savent ce qui s'est fait au primaire ; ceux du lycée construisent sur le collège. L'élève n'a jamais à recommencer, et personne ne perd un trimestre à « voir où il en est ».</p></div></article>
+          <article class="numero"><span class="n">II</span><div><h3>Trois langues, comme langues de travail</h3><p>Arabe, français et anglais dès le primaire — pas comme matières décoratives, mais comme langues dans lesquelles on raisonne, on rédige et on passe des examens. Nos bacheliers étudient ensuite dans les trois sans transition.</p></div></article>
+          <article class="numero"><span class="n">III</span><div><h3>Des adultes qui regardent chaque copie</h3><p>Des classes à effectif maîtrisé, des enseignants qui restent en moyenne onze ans chez nous, un suivi individuel. Quand un élève décroche, on appelle les parents avant que ce soit grave — pas au bulletin de juin.</p></div></article>
+          <article class="numero"><span class="n">IV</span><div><h3>Des résultats qui se vérifient</h3><p>Deux fois premiers au niveau national, 100% de réussite au baccalauréat, 100% au brevet. Les classements sont publics, les anciens sont joignables. Il n'y a rien à croire sur parole.</p></div></article>
         </div>
-      </article>
-      <article class="raison">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
-        <div>
-          <h3>Des adultes qui regardent chaque copie</h3>
-          <p>Des classes à effectif maîtrisé, des enseignants stables, un suivi individuel. Quand un élève décroche, on appelle les parents avant que ce soit grave — pas après.</p>
-        </div>
-      </article>
-      <article class="raison">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M6 4h12v5a6 6 0 0 1-12 0V4z"/><path d="M6 6H4a2 2 0 0 0 0 4h2M18 6h2a2 2 0 0 1 0 4h-2"/></svg></span>
-        <div>
-          <h3>Des résultats qui se vérifient</h3>
-          <p>Deux fois premiers au niveau national, 100% de réussite au bac. Les chiffres sont publics, les anciens sont joignables. Rien à croire sur parole.</p>
-        </div>
-      </article>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═════════ 5 · LA PREUVE — slider de témoignages d'anciens ═════════ -->
-<section class="bande fond-nuit">
-  <div class="filigrane" aria-hidden="true"><svg viewBox="0 0 200 200" fill="currentColor"><path d="M100 10l90 50-90 50-90-50z"/><path d="M40 100v40c0 20 27 35 60 35s60-15 60-35v-40" fill="none" stroke="currentColor" stroke-width="8"/></svg></div>
-  <div class="wrap">
-    <div class="tete-flex rv">
-      <div>
-        <p class="avant sur-nuit">Où sont-ils aujourd'hui ?</p>
-        <h2 class="t-sec">Nos anciens <span class="em-or">parlent mieux que nous.</span></h2>
-      </div>
-      <a href="resultats.html" class="lien-fl" style="color:var(--or-2)">Voir tous les résultats <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
+<!-- ═════════ 6 · CHIFFRES ═════════ -->
+<section class="fond-nuit">
+  <div class="chiffres" data-cascade>
+    <div class="chiffre"><b><span data-compte="40">0</span> ans</b><span>au même endroit, depuis 1986</span></div>
+    <div class="chiffre"><b><span data-compte="100" data-suffixe="%">0</span></b><span>de réussite au baccalauréat</span></div>
+    <div class="chiffre"><b><span data-compte="2" data-suffixe="×">0</span></b><span>premiers au niveau national</span></div>
+    <div class="chiffre"><b><span data-compte="11">0</span> ans</b><span>d'ancienneté moyenne des enseignants</span></div>
+  </div>
+</section>
 
-    <div class="slider rv" data-slider>
-      <div class="slider-fen">
-        <div class="slider-piste">
-          <figure class="slide">
-            <blockquote>J'ai passé douze ans à L'Ange Bleu. En médecine, j'ai retrouvé la même méthode de travail qu'on m'avait apprise au collège : je n'ai jamais eu à la réinventer.</blockquote>
-            <figcaption><span class="avat">S</span><span><b>Salma B.</b><span>Bachelière 2019 · Faculté de médecine, Casablanca</span></span></figcaption>
-          </figure>
-          <figure class="slide">
-            <blockquote>Mes trois enfants y sont passés. Ce qui m'a marqué, ce n'est pas le classement — c'est qu'on m'appelait avant que les notes baissent, jamais après.</blockquote>
-            <figcaption><span class="avat">K</span><span><b>Karim E.</b><span>Parent d'élèves · El Jadida</span></span></figcaption>
-          </figure>
-          <figure class="slide">
-            <blockquote>Arrivé en classe préparatoire, j'écrivais et je raisonnais dans trois langues. C'est là que j'ai compris ce que valait cette école.</blockquote>
-            <figcaption><span class="avat">Y</span><span><b>Yassine M.</b><span>Bachelier 2022 · Classes préparatoires, Rabat</span></span></figcaption>
-          </figure>
-        </div>
+<!-- ═════════ 7 · CITATION PLEINE LARGEUR ═════════ -->
+<section class="citation">
+  <div class="wrap rv">
+    <blockquote>Nous n'avons jamais promis plus que du travail.</blockquote>
+    <cite>La direction — depuis la première rentrée, en septembre 1986</cite>
+  </div>
+</section>
+
+<!-- ═════════ 8 · LE CAMPUS — grille bento ═════════ -->
+<section class="bande">
+  <div class="wrap">
+    <div class="tete-trait rv">
+      <div class="rang">
+        <h2 class="t-sec">Les moyens d'un<br><span class="em-bleu">grand établissement</span></h2>
+        <a href="campus.html" class="lien-fl">Visiter le campus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
+    </div>
+    <div class="bento" data-cascade>
+      <div class="b-4 b-h b-photo"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201490/c2e1c2cc-2c14-4524-971c-781ab745c13b.png" alt="Laboratoire de sciences" loading="lazy"><div class="b-txt"><h3>Trois laboratoires</h3><p>Physique, chimie, sciences de la vie. Du vrai matériel, manipulé par les élèves — pas montré depuis l'estrade.</p></div></div>
+      <div class="b-2 b-h b-plein"><div class="b-txt"><h3>Bibliothèque trilingue</h3><p>Un fonds en arabe, français et anglais. Ouverte entre les cours et le soir, pendant l'étude surveillée.</p></div></div>
+      <div class="b-2 b-photo"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201518/92e8867a-de2c-4b19-8971-ff2b38b66918.png" alt="Terrain de sport" loading="lazy"><div class="b-txt"><h3>Terrains de sport</h3></div></div>
+      <div class="b-2 b-photo"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788202060/5c7ae5c1-5c44-478f-9881-747a82250f4b.png" alt="Salle informatique" loading="lazy"><div class="b-txt"><h3>Salle informatique</h3></div></div>
+      <div class="b-2 b-or"><div class="b-txt"><h3>Cantine sur place</h3><p>Cuisine préparée dans l'établissement, menus affichés chaque semaine. Pas de sous-traitance.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 9 · TÉMOIGNAGES ═════════ -->
+<section class="bande fond-nuit">
+  <div class="wrap">
+    <div class="tete-trait rv">
+      <div class="rang">
+        <h2 class="t-sec">Nos anciens<br><span class="em-or">parlent mieux que nous</span></h2>
+        <a href="resultats.html" class="lien-fl" style="color:var(--or-2)">Voir tous les résultats <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <div class="slider rv" data-slider>
+      <div class="slider-fen"><div class="slider-piste">
+        <figure class="slide"><blockquote>J'ai passé douze ans à L'Ange Bleu. En médecine, j'ai retrouvé la même méthode de travail qu'on m'avait apprise au collège : je n'ai jamais eu à la réinventer.</blockquote><figcaption><span class="avat">S</span><span><b>Salma B.</b><span>Bachelière 2019 · Faculté de médecine, Casablanca</span></span></figcaption></figure>
+        <figure class="slide"><blockquote>Mes trois enfants y sont passés. Ce qui m'a marqué, ce n'est pas le classement — c'est qu'on m'appelait avant que les notes baissent, jamais après.</blockquote><figcaption><span class="avat">K</span><span><b>Karim E.</b><span>Parent d'élèves · El Jadida</span></span></figcaption></figure>
+        <figure class="slide"><blockquote>Arrivé en classe préparatoire, j'écrivais et je raisonnais dans trois langues. C'est là que j'ai compris ce que valait cette école.</blockquote><figcaption><span class="avat">Y</span><span><b>Yassine M.</b><span>Bachelier 2022 · Classes préparatoires, Rabat</span></span></figcaption></figure>
+      </div></div>
       <div class="slider-nav">
-        <div class="slider-pts">
-          <button class="slider-pt on" aria-label="Témoignage 1"></button>
-          <button class="slider-pt" aria-label="Témoignage 2"></button>
-          <button class="slider-pt" aria-label="Témoignage 3"></button>
-        </div>
+        <div class="slider-pts"><button class="slider-pt on" aria-label="Témoignage 1"></button><button class="slider-pt" aria-label="Témoignage 2"></button><button class="slider-pt" aria-label="Témoignage 3"></button></div>
         <div class="slider-fl">
           <button data-prev aria-label="Précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
           <button data-next aria-label="Suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -245,36 +263,43 @@
   </div>
 </section>
 
-<!-- ═════════ 6 · VIE DU GROUPE — mosaïque photos (lightbox) ═════════ -->
+<!-- ═════════ 10 · VIE DU GROUPE — grille mixte + lightbox ═════════ -->
 <section class="bande">
   <div class="wrap">
-    <div class="tete-flex rv">
-      <div>
-        <p class="avant">La vie du groupe</p>
-        <h2 class="t-sec">Ce qui se passe <span class="em-bleu">après la sonnerie</span></h2>
+    <div class="tete-trait rv">
+      <div class="rang">
+        <h2 class="t-sec">Ce qui se passe<br><span class="em-bleu">après la sonnerie</span></h2>
+        <a href="vie-scolaire.html" class="lien-fl">Clubs, sorties et événements <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <a href="vie-scolaire.html" class="lien-fl">Clubs, sorties et événements <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="galerie" data-cascade>
-      <button class="gal-i large" data-legende="Cérémonie de remise des prix"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788202040/d56237ea-4009-40e0-9e74-a7618c465563.png" alt="Cérémonie de remise des prix" loading="lazy"><span class="leg">Remise des prix</span></button>
-      <button class="gal-i" data-legende="Atelier sciences au laboratoire"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201490/c2e1c2cc-2c14-4524-971c-781ab745c13b.png" alt="Atelier sciences" loading="lazy"><span class="leg">Club sciences</span></button>
-      <button class="gal-i" data-legende="Tournoi sportif inter-classes"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201518/92e8867a-de2c-4b19-8971-ff2b38b66918.png" alt="Tournoi sportif" loading="lazy"><span class="leg">Sport</span></button>
-      <button class="gal-i" data-legende="Sortie pédagogique trimestrielle"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201329/808a8542-8a78-4315-9e95-be80ffbc165c.png" alt="Sortie pédagogique" loading="lazy"><span class="leg">Sorties</span></button>
-      <button class="gal-i" data-legende="Bibliothèque en trois langues"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201294/bab2d56e-e96f-49a9-a6e3-913fe170412f.png" alt="Bibliothèque" loading="lazy"><span class="leg">Bibliothèque</span></button>
+      <button class="gal-i large" data-legende="Cérémonie de remise des prix, en juin"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788202040/d56237ea-4009-40e0-9e74-a7618c465563.png" alt="Cérémonie de remise des prix" loading="lazy"><span class="leg">Remise des prix</span></button>
+      <button class="gal-i" data-legende="Club sciences au laboratoire"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201490/c2e1c2cc-2c14-4524-971c-781ab745c13b.png" alt="Club sciences" loading="lazy"><span class="leg">Club sciences</span></button>
+      <button class="gal-i" data-legende="Tournoi sportif inter-classes"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201518/92e8867a-de2c-4b19-8971-ff2b38b66918.png" alt="Tournoi sportif" loading="lazy"><span class="leg">Tournois</span></button>
+      <button class="gal-i" data-legende="Sortie pédagogique trimestrielle"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788202060/5c7ae5c1-5c44-478f-9881-747a82250f4b.png" alt="Sortie pédagogique" loading="lazy"><span class="leg">Sorties</span></button>
+      <button class="gal-i" data-legende="La bibliothèque, entre les cours"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201294/bab2d56e-e96f-49a9-a6e3-913fe170412f.png" alt="Bibliothèque" loading="lazy"><span class="leg">Bibliothèque</span></button>
     </div>
   </div>
 </section>
 
-<!-- ═════════ 7 · CTA FINAL — la visite ═════════ -->
+<!-- ═════════ 11 · RUBAN INSCRIPTION ═════════ -->
+<section class="ruban">
+  <div class="wrap rv">
+    <p>Les niveaux les plus demandés se remplissent avant l'été. Un appel suffit pour connaître les places restantes.</p>
+    <a href="inscription.html" class="btn btn-nuit">Voir les étapes d'inscription <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<!-- ═════════ 12 · CTA FINAL ═════════ -->
 <section class="cta-fin">
-  <div class="voile-img" aria-hidden="true"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201548/4a37c00d-dc2e-4907-b6f9-a95d3c61276c.png" alt="" loading="lazy"></div>
+  <div class="voile-img" aria-hidden="true"><img src="https://res.cloudinary.com/ddvgp1zrz/image/upload/v1788201280/2be10907-e431-4ed4-85a0-8b395452e3a0.png" alt="" loading="lazy"></div>
   <div class="wrap rv">
     <p class="avant sur-nuit">Quarante minutes, pendant les cours</p>
     <h2 class="t-sec">Une visite vaut <span class="em-or">toutes les promesses.</span></h2>
-    <p class="chapo clair" style="margin-top:1rem">Venez un matin de semaine. Vous verrez les classes en activité, les laboratoires, la cantine — et vous poserez toutes vos questions à la direction.</p>
+    <p class="chapo clair" style="margin-top:1rem">Venez un matin de semaine. Vous verrez les classes en activité, les laboratoires, la cantine — et vous poserez toutes vos questions à la direction, sans rendez-vous formel.</p>
     <div class="hero-btns">
       <a href="contact.html" class="btn btn-or">Réserver une visite <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a href="inscription.html" class="btn btn-ligne-clair">Voir les étapes d'inscription</a>
+      <a href="inscription.html" class="btn btn-ligne-clair">Pré-inscrire mon enfant</a>
     </div>
   </div>
 </section>

@@ -574,3 +574,132 @@ h1,h2,h3,h4{font-family:var(--f-titre);font-weight:560;line-height:1.08;letter-s
   .rv,[data-cascade] > *{opacity:1;translate:0 0;scale:1}
   .hero-charge > *{opacity:1;translate:0 0}
 }
+
+/* =========================================================
+   V3 — MOTIFS DE SECTIONS ÉDITORIAUX
+   Casser la monotonie "titre + grille de cartes"
+   ========================================================= */
+
+/* ---------- Bandeau défilant (ticker) ---------- */
+.ticker{overflow:hidden;background:var(--nuit);border-block:1px solid var(--trait-nuit);padding-block:1.15rem}
+.ticker-piste{display:flex;gap:3.5rem;width:max-content;animation:defile 38s linear infinite}
+.ticker:hover .ticker-piste{animation-play-state:paused}
+@keyframes defile{from{translate:0 0}to{translate:-50% 0}}
+.ticker span{display:inline-flex;align-items:center;gap:.9rem;color:var(--blanc-70);font-size:.95rem;font-weight:550;white-space:nowrap}
+.ticker span::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--or);flex-shrink:0}
+.ticker b{font-family:var(--f-titre);font-style:italic;color:var(--or-2);font-weight:600}
+
+/* ---------- Split éditorial : chiffre géant + texte ---------- */
+.edito{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:var(--gap-l);align-items:center}
+.edito-num{font-family:var(--f-titre);font-weight:600;line-height:.82;letter-spacing:-.04em;
+  font-size:clamp(5rem,3rem + 12vw,11rem);color:var(--bleu);position:relative}
+.fond-nuit .edito-num{color:transparent;-webkit-text-stroke:1.5px var(--or);opacity:.95}
+.edito-num small{display:block;font-family:var(--f-texte);font-size:.95rem;font-weight:600;
+  letter-spacing:0;color:var(--encre-70);margin-top:1.2rem;line-height:1.5;max-width:26ch;-webkit-text-stroke:0}
+.fond-nuit .edito-num small{color:var(--blanc-70)}
+
+/* ---------- Images superposées (empilement) ---------- */
+.empil{position:relative;padding:0 3rem 3.5rem 0}
+.empil img{border-radius:var(--r-xl);box-shadow:var(--ombre-l);width:100%;display:block}
+.empil .sec{position:absolute;right:0;bottom:0;width:52%;border:6px solid var(--ivoire);border-radius:var(--r-xl)}
+.fond-nuit .empil .sec{border-color:var(--nuit)}
+.fond-ciel .empil .sec{border-color:var(--ciel-2)}
+.empil .jeton{position:absolute;left:-14px;top:2rem;background:var(--or);color:var(--nuit);
+  border-radius:var(--r-s);padding:.7rem 1rem;font-family:var(--f-titre);font-weight:640;
+  font-size:1.05rem;box-shadow:var(--ombre-m);rotate:-3deg}
+
+/* ---------- Bento : grille asymétrique ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gap)}
+.bento > *{border-radius:var(--r-xl);overflow:hidden;position:relative;min-height:230px;
+  background:var(--blanc);border:1px solid var(--trait);display:flex;flex-direction:column;justify-content:flex-end}
+.bento .b-4{grid-column:span 4}
+.bento .b-3{grid-column:span 3}
+.bento .b-2{grid-column:span 2}
+.bento .b-h{min-height:380px}
+.bento img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:scale .9s cubic-bezier(.22,1,.36,1)}
+.bento .b-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(6,38,65,.85))}
+.bento .b-photo:hover img{scale:1.06}
+.bento .b-txt{padding:1.7rem;position:relative;z-index:2}
+.bento .b-photo .b-txt{color:#fff}
+.bento .b-photo .b-txt p{color:var(--blanc-70)}
+.bento h3{font-size:1.2rem;margin-bottom:.35rem}
+.bento p{font-size:.93rem;color:var(--encre-70);line-height:1.55}
+.bento .b-plein{background:var(--nuit);color:#fff;justify-content:center}
+.bento .b-plein p{color:var(--blanc-70)}
+.bento .b-or{background:var(--or-fond);border-color:rgba(227,167,47,.35);justify-content:center}
+
+/* ---------- Citation pleine largeur ---------- */
+.citation{position:relative;overflow:hidden;background:var(--nuit-2)}
+.citation .wrap{padding-block:calc(var(--s-bande)*.9);text-align:center;position:relative;z-index:2}
+.citation::before{content:'“';position:absolute;top:-3rem;left:50%;translate:-50% 0;
+  font-family:var(--f-titre);font-size:22rem;color:var(--or);opacity:.09;line-height:1;pointer-events:none}
+.citation blockquote{font-family:var(--f-titre);font-style:italic;font-weight:470;
+  font-size:clamp(1.5rem,1.1rem + 2vw,2.7rem);line-height:1.35;color:#fff;max-width:22ch;margin-inline:auto}
+.citation cite{display:block;margin-top:1.8rem;font-style:normal;font-size:.92rem;color:var(--blanc-50);font-family:var(--f-texte)}
+
+/* ---------- Colonne collante ---------- */
+.collant{display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--gap-l);align-items:start}
+.collant-g{position:sticky;top:120px}
+.collant-d{display:grid;gap:var(--gap)}
+
+/* ---------- Cartes numérotées éditoriales ---------- */
+.numeros{display:grid;gap:0;border-top:1px solid var(--trait)}
+.fond-nuit .numeros{border-color:var(--trait-nuit)}
+.numero{display:grid;grid-template-columns:5.5rem 1fr;gap:1.6rem;
+  padding:2rem 0;border-bottom:1px solid var(--trait);align-items:start;transition:padding var(--vite)}
+.fond-nuit .numero{border-color:var(--trait-nuit)}
+.numero:hover{padding-inline:1rem}
+.numero .n{font-family:var(--f-titre);font-style:italic;font-weight:600;font-size:2.4rem;
+  color:var(--bleu);line-height:1}
+.fond-nuit .numero .n{color:var(--or-2)}
+.numero h3{font-size:1.28rem;margin-bottom:.45rem}
+.numero p{color:var(--encre-70);font-size:.97rem;max-width:60ch}
+.fond-nuit .numero p{color:var(--blanc-70)}
+
+/* ---------- Grille photo mixte ---------- */
+.mixte{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.mixte figure{border-radius:var(--r-xl);overflow:hidden;position:relative;margin:0}
+.mixte img{width:100%;height:100%;object-fit:cover;transition:scale .9s cubic-bezier(.22,1,.36,1)}
+.mixte figure:hover img{scale:1.06}
+.mixte figcaption{position:absolute;bottom:0;left:0;right:0;padding:1.6rem 1.3rem .9rem;color:#fff;
+  background:linear-gradient(transparent,rgba(6,38,65,.9));font-weight:600;font-size:.95rem}
+.mixte .haute{grid-row:span 2}
+.mixte figure{min-height:230px}
+.mixte .haute{min-height:auto}
+
+/* ---------- Ruban d'accent ---------- */
+.ruban{background:var(--or-fond);border-block:1px solid rgba(227,167,47,.3)}
+.ruban .wrap{padding-block:2.4rem;display:flex;align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap}
+.ruban p{font-family:var(--f-titre);font-size:clamp(1.15rem,1rem + .8vw,1.6rem);font-weight:520;max-width:48ch;line-height:1.3}
+
+/* ---------- En-tête de section soulignée ---------- */
+.tete-trait{border-top:2px solid var(--nuit);padding-top:1.4rem;margin-bottom:var(--gap-l)}
+.fond-nuit .tete-trait{border-color:var(--or)}
+.tete-trait .rang{display:flex;align-items:baseline;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.tete-trait .idx{font-family:var(--f-titre);font-style:italic;color:var(--encre-45);font-size:1rem;flex-shrink:0}
+.fond-nuit .tete-trait .idx{color:var(--blanc-50)}
+
+/* ---------- Responsive des nouveaux motifs ---------- */
+@media (max-width:1080px){
+  .bento{grid-template-columns:repeat(4,1fr)}
+  .bento .b-4,.bento .b-3{grid-column:span 4}
+  .bento .b-2{grid-column:span 2}
+  .mixte{grid-template-columns:1fr 1fr}
+  .mixte .haute{grid-row:auto}
+}
+@media (max-width:900px){
+  .edito,.collant{grid-template-columns:1fr}
+  .collant-g{position:static}
+  .empil{padding:0 2rem 2.5rem 0}
+  .citation::before{font-size:14rem}
+}
+@media (max-width:640px){
+  .bento{grid-template-columns:1fr}
+  .bento .b-4,.bento .b-3,.bento .b-2{grid-column:auto}
+  .mixte{grid-template-columns:1fr}
+  .numero{grid-template-columns:3.2rem 1fr;gap:1rem}
+  .numero .n{font-size:1.8rem}
+  .empil{padding:0 1.4rem 1.8rem 0}
+  .empil .jeton{left:0;font-size:.9rem}
+  .ticker-piste{gap:2rem}
+}
