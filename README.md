@@ -30,5 +30,7 @@ La couche de données est dans `src/data/store.ts` (collections `news`, `events`
 ## Formulaires
 Contact et pré-inscription enregistrent la demande (visible dans l'administration) et proposent toujours l'envoi par WhatsApp.
 
-## Photos
-La façade (`src/assets/campus.jpg`) est en fond du hero de l'accueil. D'autres photos pourront être ajoutées dans les cartes des cycles et la page Campus.
+## Photos et vidéo
+La façade (`src/assets/campus.jpg`) est en fond du hero. Toutes les autres photos et la vidéo sont, pour la démonstration, les médias du site AGC (`PHOTOS` et `VIDEO` dans `src/content/site.ts`) : il suffit de remplacer chaque adresse par celle de la photo d'Ange Bleu correspondante (classe, laboratoire, bibliothèque, sport, cantine, cour, clubs, chaque cycle).
+
+Remarque : l'aperçu hébergé sur claude.ai bloque les images externes ; ouvrez `dist-apercu/index.html` (ou le fichier `angebleu-apercu.html` fourni) directement dans un navigateur pour voir photos et vidéo. Le site déployé (Vercel) les affiche normalement.
