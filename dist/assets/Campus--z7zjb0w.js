@@ -1,0 +1,11 @@
+import{c as i,j as e,S as c,q as s,R as o,n as l}from"./index-CXUfuUO0.js";import{P as m,S as t,C as d,a as p}from"./sections-CfuyL9Hf.js";import{F as h,B as u,a as x}from"./flask-conical-D0B7c4M2.js";import{T as j}from"./trophy-DB2ZROpc.js";import{U as y}from"./utensils-crossed-n68u81tb.js";/**
+ * @license lucide-react v0.546.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const C=[["rect",{width:"20",height:"14",x:"2",y:"3",rx:"2",key:"48i651"}],["line",{x1:"8",x2:"16",y1:"21",y2:"21",key:"1svkeh"}],["line",{x1:"12",x2:"12",y1:"17",y2:"21",key:"vw1qmm"}]],g=i("monitor",C);/**
+ * @license lucide-react v0.546.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const v=[["path",{d:"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",key:"oel41y"}],["path",{d:"m9 12 2 2 4-4",key:"dzmm74"}]],f=i("shield-check",v);function B(){return e.jsxs("main",{children:[e.jsx(c,{title:"Campus et équipements — Groupe Scolaire Ange Bleu",description:s.lead,path:"/campus"}),e.jsx(m,{chapter:"L’établissement · Campus",title:s.title,lead:s.lead}),e.jsx("section",{className:"section pt-0",children:e.jsxs("div",{className:"wrap",children:[e.jsx(t,{chapter:"Nos équipements",title:"Ce que votre enfant utilisera chaque semaine."}),e.jsx("div",{className:"mt-12",children:e.jsx(d,{items:s.items,icons:[h,u,x,g,j,y,f]})})]})}),e.jsx("section",{className:"section pt-0",children:e.jsx("div",{className:"wrap",children:e.jsxs("div",{className:"mesh-blue on-blue rounded-[var(--r-lg)] p-8 md:p-14",children:[e.jsx(t,{light:!0,chapter:"En chiffres",title:"Les moyens d’un grand établissement."}),e.jsx("div",{className:"grid grid-cols-2 lg:grid-cols-4 gap-8 mt-12",children:s.numbers.map(([n,r],a)=>e.jsx(o,{delay:.06*a,children:e.jsx(l,{n,l:r,light:!0})},a))})]})})}),e.jsx(p,{title:"Rien ne remplace une visite un matin de semaine.",desc:"Classes, laboratoires, cantine : quarante minutes pendant les cours, avec la direction."})]})}export{B as default};
