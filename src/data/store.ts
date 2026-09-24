@@ -1,3 +1,4 @@
+import { PHOTOS } from '../content/site';
 /* ------------------------------------------------------------------ */
 /* Couche de données unique : Firebase (Firestore + Auth) quand la       */
 /* configuration VITE_FIREBASE_* est fournie, sinon mémoire du navigateur*/
@@ -22,9 +23,9 @@ const today = (d = 0) => new Date(Date.now() + d * 86400000).toISOString().slice
 /* Données d'exemple (mode démonstration) */
 const SEED: { [K in Key]: Collections[K][] } = {
   news: [
-    { id: 'n1', title: 'Journée portes ouvertes — samedi 11 octobre', date: today(-3), category: 'Vie de l’école', excerpt: 'Classes, laboratoires, atelier robotique et cantine ouverts aux familles, de 9h à 13h.', content: 'Les familles sont invitées à découvrir l’établissement pendant les heures de cours : classes du primaire, laboratoires de physique et de chimie, atelier robotique et cantine. La direction et les directeurs de cycle répondent à toutes les questions. Entrée libre, inscription conseillée par téléphone.', image: '', published: true },
-    { id: 'n2', title: 'Nos équipes qualifiées pour la finale régionale de robotique', date: today(-12), category: 'Robotique', excerpt: 'Deux équipes du collège et une du lycée défendront l’école en avril.', content: 'Après la phase de sélection, trois équipes Ange Bleu sont qualifiées pour la finale régionale. Les robots ont été conçus et programmés au club robotique, deux après-midis par semaine, depuis septembre.', image: '', published: true },
-    { id: 'n3', title: 'Résultats du bac 2026 : 100 % de réussite, 88 % de mentions', date: today(-40), category: 'Résultats', excerpt: 'Une promotion entière reçue, avec une majorité de mentions bien et très bien.', content: 'Tous nos candidats ont obtenu leur baccalauréat, avec 88 % de mentions bien et très bien. Bravo aux élèves, aux familles et aux enseignants.', image: '', published: true },
+    { id: 'n1', title: 'Journée portes ouvertes — samedi 11 octobre', date: today(-3), category: 'Vie de l’école', excerpt: 'Classes, laboratoires, atelier robotique et cantine ouverts aux familles, de 9h à 13h.', content: 'Les familles sont invitées à découvrir l’établissement pendant les heures de cours : classes du primaire, laboratoires de physique et de chimie, atelier robotique et cantine. La direction et les directeurs de cycle répondent à toutes les questions. Entrée libre, inscription conseillée par téléphone.', image: PHOTOS.event, published: true },
+    { id: 'n2', title: 'Nos équipes qualifiées pour la finale régionale de robotique', date: today(-12), category: 'Robotique', excerpt: 'Deux équipes du collège et une du lycée défendront l’école en avril.', content: 'Après la phase de sélection, trois équipes Ange Bleu sont qualifiées pour la finale régionale. Les robots ont été conçus et programmés au club robotique, deux après-midis par semaine, depuis septembre.', image: PHOTOS.act1, published: true },
+    { id: 'n3', title: 'Résultats du bac 2026 : 100 % de réussite, 88 % de mentions', date: today(-40), category: 'Résultats', excerpt: 'Une promotion entière reçue, avec une majorité de mentions bien et très bien.', content: 'Tous nos candidats ont obtenu leur baccalauréat, avec 88 % de mentions bien et très bien. Bravo aux élèves, aux familles et aux enseignants.', image: PHOTOS.lycee, published: true },
   ],
   events: [
     { id: 'e1', title: 'Portes ouvertes', date: today(17), time: '9h – 13h', place: 'Tout l’établissement', cycle: 'Tous cycles', desc: 'Visite libre des classes, laboratoires et de la cantine.' },

@@ -2,10 +2,10 @@ import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, useReducedMotion, AnimatePresence, MotionValue } from 'motion/react';
 import { ArrowUpRight, ArrowLeft, ArrowRight, Bot, Code2, FlaskConical, Languages, BookOpen, Cpu, GraduationCap, Sparkles } from 'lucide-react';
-import { IMG, HOME, CYCLES, CycleId } from '../content/site';
+import { IMG, HOME, CYCLES, CycleId, PHOTOS, JOURNEE } from '../content/site';
 import { WordReveal, LineMask, Reveal, Counter, EASE } from '../components/ui/motion';
 import { Button, Marquee, Seo, Halo, Chip } from '../components/ui';
-import { SectionHead } from '../components/sections';
+import { SectionHead, VideoCard, PhotoStrip, Photo } from '../components/sections';
 import { preloaderDelay } from '../components/Preloader';
 import { store, News, fmtDate } from '../data/store';
 import { NewsCard } from './Actualites';
@@ -110,11 +110,9 @@ const CycleCard = ({ id, i, total, progress }: { id: CycleId; i: number; total: 
           <p className={`t-lead mt-6 max-w-[46ch] ${last ? 'text-white/85' : 'text-mute'}`}>{c.heroLead}</p>
           <div className="mt-auto pt-8"><Link to={`/cycles/${id}`} className={`btn ${last ? 'btn-gold' : 'btn-azure'}`}>Découvrir le {c.title.toLowerCase()} <ArrowUpRight size={16} /></Link></div>
         </div>
-        <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
-          <div className={`relative w-64 h-64 rounded-full flex items-center justify-center ${last ? 'bg-white/10' : 'bg-white/60'}`}>
-            <div className="absolute inset-[-14%] halo-spin opacity-80"><Halo spin={false} className="w-full h-full" /></div>
-            <Icon size={72} strokeWidth={1.2} className={last ? 'text-gold-2' : 'text-azure'} />
-          </div>
+        <div className="lg:col-span-5 relative">
+          <div className="relative rounded-[var(--r)] overflow-hidden aspect-[4/3] lg:aspect-[4/5] bg-white/40"><img src={PHOTOS[id]} alt={c.title} loading="lazy" className="w-full h-full object-cover" /></div>
+          <span className={`absolute -top-4 -right-2 w-16 h-16 rounded-full flex items-center justify-center shadow-lg ${last ? 'bg-gold text-night' : 'bg-white text-azure'}`}><Icon size={30} strokeWidth={1.5} /></span>
         </div>
       </div>
     </motion.li>
@@ -145,10 +143,12 @@ const Beyond = () => {
         <SectionHead chapter="Au-delà du programme officiel" title="Le programme marocain, plus ce qui vient après." lead="Toutes les matières nationales sont enseignées. Nous y ajoutons ce que le programme n’a pas encore." />
         <div className="grid md:grid-cols-12 gap-5 mt-14">
           {HOME.beyond.map((b, i) => { const Icon = icons[i]; const big = i === 0 || i === 3; return (
-            <Reveal key={i} delay={0.08 * i} className={`${big ? 'md:col-span-7' : 'md:col-span-5'} rounded-[var(--r)] p-8 md:p-10 relative overflow-hidden ${i === 0 ? 'mesh-blue on-blue' : i === 3 ? 'bg-gold-3' : 'bg-sky'} min-h-[260px] flex flex-col justify-end group`}>
-              <span className={`absolute right-6 top-6 w-14 h-14 rounded-full flex items-center justify-center transition-transform duration-700 group-hover:rotate-12 ${i === 0 ? 'bg-white/15 text-gold-2' : 'bg-white text-azure'}`}><Icon size={24} strokeWidth={1.5} /></span>
-              <h3 className={`t-h2 ${i === 0 ? 'text-white' : ''}`}>{b.title}</h3>
-              <p className={`t-body mt-3 max-w-[44ch] ${i === 0 ? 'text-white/80' : 'text-mute'}`}>{b.text}</p>
+            <Reveal key={i} delay={0.08 * i} className={`${big ? 'md:col-span-7' : 'md:col-span-5'} rounded-[var(--r)] p-8 md:p-10 relative overflow-hidden min-h-[320px] flex flex-col justify-end group on-blue`}>
+              <img src={[PHOTOS.act1, PHOTOS.classroom, PHOTOS.lab, PHOTOS.library][i]} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/30 to-transparent" />
+              <span className="absolute right-6 top-6 w-16 h-16 rounded-full flex items-center justify-center bg-white/90 text-azure shadow-lg transition-transform duration-700 group-hover:rotate-12"><Icon size={30} strokeWidth={1.5} /></span>
+              <h3 className="t-h2 text-white relative">{b.title}</h3>
+              <p className="t-body mt-3 max-w-[44ch] text-white/85 relative">{b.text}</p>
             </Reveal>
           ); })}
         </div>
@@ -240,6 +240,47 @@ const LatestNews = () => {
   );
 };
 
+/* ------------------------------------------------------------------ */
+/* Vidéo de présentation                                                */
+/* ------------------------------------------------------------------ */
+const Video = () => (
+  <section className="section mesh relative overflow-hidden">
+    <div className="wrap">
+      <SectionHead center chapter="En vidéo" title="Deux minutes dans nos couloirs." lead="Les classes, les laboratoires, la cour, la cantine : l’ambiance de l’école, sans commentaire." />
+      <div className="mt-12 max-w-[1040px] mx-auto"><VideoCard /></div>
+    </div>
+  </section>
+);
+
+/* ------------------------------------------------------------------ */
+/* Une journée à Ange Bleu — photos + étapes                            */
+/* ------------------------------------------------------------------ */
+const Day = () => {
+  const photos = [PHOTOS.kids, PHOTOS.classroom, PHOTOS.sport, PHOTOS.canteen, PHOTOS.lab, PHOTOS.act2, PHOTOS.event];
+  return (
+    <section className="section bg-white">
+      <div className="wrap">
+        <SectionHead chapter="Le quotidien" title={JOURNEE.title} lead={JOURNEE.lead} />
+        <ol className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {JOURNEE.steps.map((st, i) => (
+            <Reveal key={i} as="li" delay={(i % 3) * 0.08} className="card overflow-hidden group">
+              <div className="aspect-[16/10] overflow-hidden bg-sky-2 relative"><img src={photos[i]} alt="" loading="lazy" className="w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-105" /><span className="absolute left-4 top-4 chip">{st.time}</span></div>
+              <div className="p-6"><h3 className="t-h4 text-lg">{st.title}</h3><p className="t-small text-mute mt-2">{st.text}</p></div>
+            </Reveal>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+};
+
+const Gallery = () => (
+  <section className="py-6 md:py-10 bg-white">
+    <div className="wrap mb-8"><SectionHead chapter="L’école en images" title="La cour, les labos, la bibliothèque, le terrain." link={{ label: 'Visiter le campus', to: '/campus' }} /></div>
+    <PhotoStrip />
+  </section>
+);
+
 export default function Home() {
   const [ticker, setTicker] = useState<News[]>([]);
   useEffect(() => store.subscribe('news', (r) => setTicker(r.filter((n) => n.published).slice(0, 4))), []);
@@ -249,10 +290,13 @@ export default function Home() {
       <Hero />
       <div className="bg-azure text-white py-3.5 flex items-stretch"><Link to="/actualites" className="shrink-0 flex items-center gap-2 pl-[var(--gutter)] pr-5 text-[13px] font-bold tracking-[0.08em] uppercase text-gold-2">Actualités</Link><div className="min-w-0 flex-1"><Marquee duration={60} items={[...ticker.map((n) => <Link key={n.id} to={`/actualites/${n.id}`} className="text-[13px] font-bold tracking-[0.04em] whitespace-nowrap hover:underline"><span className="text-white/60 mr-2">{fmtDate(n.date)}</span>{n.title}</Link>), ...HOME.facts.map((f) => <span key={f} className="text-[13px] font-bold tracking-[0.08em] uppercase whitespace-nowrap">{f}</span>)]} /></div></div>
       <Director />
+      <Video />
       <Cycles />
       <Beyond />
+      <Day />
       <Firsts />
       <Numbers />
+      <Gallery />
       <LatestNews />
       <Voices />
     </main>

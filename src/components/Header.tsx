@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { ArrowUpRight, Phone, Mail } from 'lucide-react';
-import { SITE, IMG, NAV } from '../content/site';
+import { SITE, IMG, MENU } from '../content/site';
 import { EASE } from './ui/motion';
 
-const PRIMARY = NAV.filter((n) => ['/etablissement', '/cycles/primaire', '/cycles/college', '/cycles/lycee', '/actualites'].includes(n.to));
+const PRIMARY = [{ label: 'L’établissement', to: '/etablissement' }, { label: 'Primaire', to: '/cycles/primaire' }, { label: 'Collège', to: '/cycles/college' }, { label: 'Lycée', to: '/cycles/lycee' }, { label: 'Actualités', to: '/actualites' }, { label: 'Contact', to: '/contact' }];
 
 /* Navigation flottante : une capsule de verre centrée, qui se resserre au défilement */
 export const Header = () => {
@@ -41,23 +41,22 @@ export const Header = () => {
         {open && (
           <motion.div id="menu" className="fixed inset-0 z-40 mesh" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
             <div className="wrap h-full pt-28 pb-10 overflow-y-auto">
-              <div className="max-w-[1120px] mx-auto grid lg:grid-cols-12 gap-10">
-                <ul className="lg:col-span-8 grid sm:grid-cols-2 gap-2">
-                  {[{ label: 'Accueil', to: '/' }, ...NAV].map((l, i) => (
-                    <motion.li key={l.to} initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 + i * 0.03, duration: 0.6, ease: EASE }}>
-                      <Link to={l.to} className="group glass rounded-3xl flex items-center justify-between px-6 py-5 hover:bg-white transition-colors">
-                        <span className="font-display text-[clamp(1.3rem,2vw,1.7rem)] leading-none">{l.label}</span>
-                        <span className="w-9 h-9 rounded-full bg-sky text-azure flex items-center justify-center group-hover:bg-gold group-hover:text-night transition-colors"><ArrowUpRight size={16} /></span>
-                      </Link>
-                    </motion.li>
+              <div className="max-w-[1120px] mx-auto">
+                <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+                  {MENU.map((g, gi) => (
+                    <motion.div key={g.title} initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 + gi * 0.08, duration: 0.6, ease: EASE }} className="glass rounded-[var(--r)] p-5">
+                      <p className="chip mb-4">{g.title}</p>
+                      <ul className="space-y-1">
+                        {g.items.map((l) => (
+                          <li key={l.to}><Link to={l.to} className="group flex items-center justify-between gap-3 rounded-2xl px-3 py-2.5 hover:bg-white transition-colors"><span><span className="block font-bold text-[15px]">{l.label}</span><span className="block text-xs text-mute">{l.desc}</span></span><span className="w-8 h-8 rounded-full bg-sky text-azure flex items-center justify-center group-hover:bg-gold group-hover:text-night transition-colors shrink-0"><ArrowUpRight size={14} /></span></Link></li>
+                        ))}
+                      </ul>
+                    </motion.div>
                   ))}
-                </ul>
-                <motion.div className="lg:col-span-4 card p-7 space-y-5 text-[15px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
-                  <p className="chip">Contact</p>
-                  <a href={SITE.phoneHref} className="flex items-center gap-3 font-semibold"><Phone size={15} className="text-gold" />{SITE.phone}</a>
-                  <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 font-semibold"><Mail size={15} className="text-gold" />{SITE.email}</a>
-                  <p className="text-mute">{SITE.address.line1}, {SITE.address.line2}<br />{SITE.hours}</p>
-                  <Link to="/contact" className="btn btn-azure w-full">Réserver une visite</Link>
+                </div>
+                <motion.div className="mt-6 card p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 text-[15px]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-2"><a href={SITE.phoneHref} className="flex items-center gap-2 font-semibold"><Phone size={15} className="text-gold" />{SITE.phone}</a><a href={`mailto:${SITE.email}`} className="flex items-center gap-2 font-semibold"><Mail size={15} className="text-gold" />{SITE.email}</a><span className="text-mute text-sm">{SITE.hours}</span></div>
+                  <div className="flex gap-2"><Link to="/contact" className="btn btn-azure !h-10 !px-4 text-sm">Réserver une visite</Link><Link to="/inscription" className="btn btn-gold !h-10 !px-4 text-sm">Pré-inscrire</Link></div>
                 </motion.div>
               </div>
             </div>

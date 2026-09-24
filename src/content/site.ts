@@ -24,6 +24,40 @@ export const SITE = {
   social: { facebook: 'https://www.facebook.com', instagram: 'https://www.instagram.com' },
 };
 
+/** Photos de démonstration (médias du site AGC, à remplacer par celles d'Ange Bleu) + vidéo de présentation */
+const CDN = 'https://cdn.prod.website-files.com/682f40cedbb46cd6e15b45cb/';
+export const PHOTOS = {
+  classroom: CDN + '69de1b497dac963ec620e39c_Capture%20d%E2%80%99e%CC%81cran%202026-04-14%20a%CC%80%2011.45.22.png',
+  kids: CDN + '6a06436b8e9647708e2d4b94_WhatsApp%20Image%202026-03-18%20at%2000.54.42%20(2)%20-%20Copie.jpeg',
+  event: CDN + '69c1d233dc4cf99b45616f50_491777598_691096323477848_5143141736472395314_n.jpg',
+  team: CDN + '69cd5b3c8fbdc13183530b9d_team-buid%20(1).jpg',
+  canteen: CDN + '6a0641c4501289912ee5bfa9_20260408_102058.jpg',
+  library: CDN + '6a06413ec3ed04098d4bd38b_20260408_103650.jpg',
+  lab: CDN + '6a0642e35c967a63aaf11e02_20260408_111256.jpg',
+  sport: CDN + '6a09f38a9d6e7a93cd71f0cd_WhatsApp%20Image%202026-05-17%20at%2000.58.02%20(1).jpeg',
+  eco: CDN + '69de1b48468bdf68fcdab96e_Capture%20d%E2%80%99e%CC%81cran%202026-04-14%20a%CC%80%2011.44.53.png',
+  primaire: CDN + '6a0642a62888461bc238b590_20260408_105811.jpg',
+  college: CDN + '6a06426cebf90414139a75fd_WhatsApp%20Image%202026-04-08%20at%2009.29.14%20(2).jpeg',
+  lycee: CDN + '6a0642a45998583a1d309187_%23exames%20%23boncourage.webp',
+  primaire2: CDN + '6a0a087f4aa97f21b1f3439e_20260408_105726.jpg',
+  primaire3: CDN + '6a0a087cf1a88a8406ee24fc_20260408_110706.jpg',
+  college2: CDN + '6a06426f924d5314fbb6e81b_WhatsApp%20Image%202026-04-08%20at%2009.29.13%20(2).jpeg',
+  college3: CDN + '6a0b4f06dcb3815df08560c6_WhatsApp%20Image%202026-05-18%20at%2018.39.00%20(1).jpeg',
+  lycee2: CDN + '6a0642fb4fb44268106e9ccc_20260408_111637.jpg',
+  lycee3: CDN + '6a0643d414e10d71b15a3753_20260408_102646.jpg',
+  space1: CDN + '6a0641da8757c5dc7374be96_20260408_102348.jpg',
+  space2: CDN + '6a0642fe5998583a1d309c90_20260408_111431.jpg',
+  space3: CDN + '6a064206ed8364d9e0de4b63_20260408_102032.jpg',
+  space4: CDN + '6a0641a7335a4fa036c06f69_20260408_112139.avif',
+  act1: CDN + '6a079817dc033d19c3e68bb6_WhatsApp%20Image%202026-05-15%20at%2022.53.52.jpeg',
+  act2: CDN + '6a09f391f71666e4fc4fa209_WhatsApp%20Image%202026-05-17%20at%2000.58.03.jpeg',
+  act3: CDN + '6a09f38dd925870ce981901a_WhatsApp%20Image%202026-05-17%20at%2000.58.02.jpeg',
+  act4: CDN + '6a09f390456d7c60eaedd730_WhatsApp%20Image%202026-05-17%20at%2000.58.03%20(1).jpeg',
+  act5: CDN + '6a09f39167a0469d6f6065ae_WhatsApp%20Image%202026-05-17%20at%2000.58.03%20(2).jpeg',
+  maternelle: CDN + '6a06431c03ee9b32184c769e_20260408_104421%20-%20Copie.jpg',
+  presco: CDN + '6a0643698b957947262c740e_prescolaire4.jpg',
+};
+export const VIDEO = 'https://res.cloudinary.com/ddvgp1zrz/video/upload/v1779369814/presentation_q1lmet.mp4';
 export const IMG = { emblem, monogramme, monogrammeBlanc, logoComplet, campus };
 
 export const NAV = [
@@ -39,6 +73,27 @@ export const NAV = [
   { label: 'Espace parents', to: '/parents' },
   { label: 'Inscription', to: '/inscription' },
   { label: 'Contact', to: '/contact' },
+];
+/** Menu organisé en trois groupes, avec une ligne de description */
+export const MENU = [
+  { title: 'L’établissement', items: [
+    { label: 'Notre histoire', desc: 'Quarante ans, un projet', to: '/etablissement' },
+    { label: 'Campus et équipements', desc: 'Labos, sport, bibliothèque', to: '/campus' },
+    { label: 'Vie scolaire', desc: 'Clubs, sorties, événements', to: '/vie-scolaire' },
+    { label: 'Résultats', desc: 'Deux fois premiers du Maroc', to: '/resultats' },
+    { label: 'Actualités', desc: 'Nouvelles et agenda', to: '/actualites' },
+  ] },
+  { title: 'Les cycles', items: [
+    { label: 'Chapitre I — Primaire', desc: '6 à 12 ans · 6 niveaux', to: '/cycles/primaire' },
+    { label: 'Chapitre II — Collège', desc: '12 à 15 ans · 3 niveaux', to: '/cycles/college' },
+    { label: 'Chapitre III — Lycée', desc: '15 à 18 ans · vers le bac', to: '/cycles/lycee' },
+  ] },
+  { title: 'Pratique', items: [
+    { label: 'Cantine, transport, étude', desc: 'Le quotidien pris en charge', to: '/services' },
+    { label: 'Espace parents', desc: 'Suivi et communication', to: '/parents' },
+    { label: 'Inscription', desc: 'Étapes, dossier, visite', to: '/inscription' },
+    { label: 'Nous contacter', desc: 'Visiter, appeler, écrire', to: '/contact' },
+  ] },
 ];
 
 export const HOME = {
@@ -277,3 +332,48 @@ export const FAQ = [
   { q: 'Peut-on inscrire un enfant en cours d’année ?', a: 'Oui, selon les places disponibles dans le niveau demandé. Contactez le secrétariat.' },
   { q: 'Comment suivre la scolarité de mon enfant ?', a: 'Carnet de correspondance, circulaires, trois rendez-vous par an après chaque conseil de classe, et un appel du directeur de cycle dès le premier signal faible.' },
 ];
+
+/* ------------------------------------------------------------------ */
+/* Contenus complémentaires (à valider par l'établissement)             */
+/* ------------------------------------------------------------------ */
+export const PEDAGOGIE = {
+  title: 'Notre pédagogie, en clair.',
+  lead: 'Le programme national marocain, enseigné avec méthode, et enrichi de ce qui prépare vraiment un élève à l’après : trois langues de travail, le numérique, la robotique et l’habitude de l’effort.',
+  blocks: [
+    { title: 'Des fondamentaux non négociables', text: 'Lire, écrire, compter, raisonner. Au primaire, la lecture à voix haute est quotidienne, le calcul mental chronométré, le cahier soigné. Ce socle est vérifié à chaque fin de trimestre et repris tant qu’il n’est pas acquis : personne ne passe au chapitre suivant avec des lacunes.' },
+    { title: 'Trois langues de travail', text: 'L’arabe, le français et l’anglais ne sont pas seulement des matières : ce sont des langues dans lesquelles on apprend les autres matières. Sciences en français, histoire en arabe, projets en anglais. Nos bacheliers poursuivent leurs études dans les trois sans transition.' },
+    { title: 'Le numérique comme outil, pas comme écran', text: 'Un poste par élève en salle informatique, initiation dès le primaire, Scratch puis Python. La robotique arrive en 1re année collège : assembler, programmer, faire bouger un robot, puis le présenter en compétition. L’objectif n’est pas de consommer la technologie, mais de la comprendre.' },
+    { title: 'Évaluer pour progresser', text: 'Devoirs surveillés réguliers dès le collège, copies corrigées ligne à ligne, examens blancs en conditions réelles au lycée. Chaque bulletin est commenté en vingt minutes avec la famille. Une baisse de résultats déclenche un appel avant le conseil de classe, jamais après.' },
+    { title: 'Des classes tenues', text: 'Effectifs limités, ponctualité exigée, carnet de correspondance signé chaque semaine. Une classe calme est la première condition pour apprendre. Nos enseignants ont chacun passé une leçon d’essai devant une vraie classe avant d’être recrutés.' },
+    { title: 'L’orientation préparée, pas subie', text: 'Entretien individuel en 3e année collège, puis en tronc commun. Dossiers post-bac finalisés en avril de l’année du bac, Maroc et étranger. Nos anciens sont en médecine, en classes préparatoires, en écoles d’ingénieurs, en architecture, en commerce — et surtout, ils y restent.' },
+  ],
+};
+
+export const JOURNEE = {
+  title: 'Une journée au Groupe Scolaire Ange Bleu.',
+  lead: 'De la sonnerie de 8h à l’atelier robotique du mercredi. Voici, sans enjoliver, ce que vit un élève chez nous.',
+  steps: [
+    { time: '7h45', title: 'Accueil et garderie du matin', text: 'Portail surveillé, salle d’accueil pour les parents qui embauchent tôt. Les absences sont signalées aux familles dans l’heure.' },
+    { time: '8h00', title: 'Cours du matin', text: 'Quatre séances de 55 minutes, matières fondamentales en tête : langues et mathématiques quand l’attention est la meilleure.' },
+    { time: '10h00', title: 'Récréation encadrée', text: 'Cour principale et terrains, surveillants à chaque entrée. Au primaire, une collation est prévue.' },
+    { time: '12h00', title: 'Cantine', text: 'Repas cuisinés sur place, menus affichés chaque semaine dans l’espace parents, alternatives en cas d’allergie signalée.' },
+    { time: '14h00', title: 'Cours de l’après-midi', text: 'Laboratoires, langues, EPS et arts selon les jours. Le mercredi après-midi, place aux clubs.' },
+    { time: '16h30', title: 'Étude surveillée ou clubs', text: 'Encadrée par des enseignants jusqu’à 18h : les devoirs rentrent faits à la maison. Robotique, sciences, théâtre, lecture, arts.' },
+    { time: '18h00', title: 'Fermeture', text: 'Dernier départ du transport scolaire, derniers élèves récupérés. Une journée complète, prise en charge de bout en bout.' },
+  ],
+};
+
+export const LANGUES = {
+  title: 'Trilingue dès la première année.',
+  text: 'L’arabe est la langue de la culture et de l’identité ; le français, celle des sciences et de l’enseignement supérieur marocain ; l’anglais, celle du monde. Nous enseignons les trois comme des langues de travail, avec des enseignants spécialistes de chacune, et nous les évaluons à l’écrit comme à l’oral. Le concours d’éloquence de février se déroule dans les trois.',
+  items: [['Arabe', 'Lecture, écriture, expression. Langue d’enseignement de l’histoire, de l’éducation islamique et de la culture marocaine.'], ['Français', 'Langue des sciences et des mathématiques. Rédaction, dissertation, oraux réguliers au lycée.'], ['Anglais', 'À l’oral dès la 2e année primaire, à l’écrit dès la 3e. Renforcé au collège, exigible à l’oral au lycée.']],
+};
+
+export const ENGAGEMENTS = [
+  { title: 'Sécurité', text: 'Enceinte fermée, accès contrôlé, personnel de surveillance à chaque entrée et sortie, protocole d’urgence connu de tous.' },
+  { title: 'Hygiène et santé', text: 'Infirmerie avec personnel de premiers secours, protocole d’appel immédiat des parents, assurance scolaire incluse.' },
+  { title: 'Transparence', text: 'Les résultats sont publics, les anciens joignables, les menus et les circulaires consultables par les familles.' },
+  { title: 'Réactivité', text: 'Aucune question de parent ne reste sans réponse plus de 48 heures. La direction reçoit sans rendez-vous le samedi matin.' },
+];
+
+export const GALLERY_CAPTIONS = ['La cour principale', 'Laboratoire de physique', 'Bibliothèque trilingue', 'Terrain de sport', 'Salle de classe', 'Cantine', 'Atelier robotique', 'Remise des prix'];

@@ -1,8 +1,8 @@
 import { GraduationCap } from 'lucide-react';
-import { RESULTATS as R } from '../content/site';
+import { RESULTATS as R, PHOTOS } from '../content/site';
 import { Reveal, Counter } from '../components/ui/motion';
 import { Seo, Stat, Halo } from '../components/ui';
-import { PageHero, SectionHead, CtaBand } from '../components/sections';
+import { PageHero, SectionHead, CtaBand, Photo } from '../components/sections';
 
 export default function Resultats() {
   return (
@@ -11,6 +11,10 @@ export default function Resultats() {
       <PageHero chapter="Résultats · vérifiables" title={R.title} lead={R.lead} />
       <section className="section pt-0"><div className="wrap grid md:grid-cols-2 gap-5">
         {R.feats.map((f, i) => <Reveal key={i} delay={0.1 * i} className={`${i === 0 ? 'bg-sky-2' : 'mesh-blue on-blue'} rounded-[var(--r-lg)] p-8 md:p-12 relative overflow-hidden`}><div className="absolute -right-24 -top-16 w-[380px] opacity-50"><Halo /></div><p className={`relative font-display text-[clamp(4.5rem,9vw,8rem)] leading-none tracking-tight ${i === 0 ? 'text-azure' : 'text-gold-2'}`}><Counter to={Number(f.year)} duration={1.4} /></p><p className={`relative t-h3 mt-4 ${i === 1 ? 'text-white' : ''}`}>{f.title}</p><p className={`relative t-body mt-3 ${i === 1 ? 'text-white/80' : 'text-mute'}`}>{f.text}</p></Reveal>)}
+      </div></section>
+      <section className="section pt-0"><div className="wrap grid lg:grid-cols-12 gap-10 items-center">
+        <div className="lg:col-span-5"><Photo src={PHOTOS.lycee} ratio="aspect-[4/5]" caption="Bac 2026" /></div>
+        <div className="lg:col-span-7"><SectionHead chapter="La méthode" title="Comment on prépare un premier du Maroc." lead="Programme bouclé en avance, un devoir surveillé par semaine en temps limité sur annales nationales, deux bacs blancs complets en conditions réelles, orientation finalisée en avril. Rien d’extraordinaire : de la régularité, tenue pendant douze ans." /><ul className="mt-8 grid sm:grid-cols-2 gap-3 text-[15px]">{['Un devoir surveillé par semaine', 'Copies rendues sous huit jours', 'Deux bacs blancs anonymés', 'Colles orales au lycée', 'Heure de méthodologie au collège', 'Appel aux familles dès le premier signal'].map((x) => <li key={x} className="card px-4 py-3 font-semibold">{x}</li>)}</ul></div>
       </div></section>
       <section className="section pt-0"><div className="wrap"><SectionHead chapter="En chiffres" title="Ce que produisent douze années." /><div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-12">{R.numbers.map(([n, l], i) => <Reveal key={i} delay={0.06 * i} className="card p-7"><Stat n={n} l={l} /></Reveal>)}</div></div></section>
       <section className="section pt-0"><div className="wrap">
