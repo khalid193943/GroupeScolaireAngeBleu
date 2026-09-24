@@ -11,14 +11,20 @@ const PRIMARY = [{ label: 'L’établissement', to: '/etablissement' }, { label:
 export const Header = () => {
   const loc = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
-  useEffect(() => { const f = () => setScrolled(window.scrollY > 24); f(); window.addEventListener('scroll', f, { passive: true }); return () => window.removeEventListener('scroll', f); }, []);
+  // Se cache en descendant, réapparaît dès qu'on remonte
+  useEffect(() => {
+    let last = window.scrollY;
+    const f = () => { const y = window.scrollY; setScrolled(y > 24); setHidden(y > last && y > 160 && !open); last = y; };
+    f(); window.addEventListener('scroll', f, { passive: true }); return () => window.removeEventListener('scroll', f);
+  }, [open]);
   useEffect(() => { setOpen(false); }, [loc.pathname]);
   useEffect(() => { document.documentElement.style.overflow = open ? 'hidden' : ''; return () => { document.documentElement.style.overflow = ''; }; }, [open]);
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 pointer-events-none">
+      <header className={`fixed inset-x-0 top-0 z-50 pointer-events-none transition-transform duration-500 ${hidden ? '-translate-y-[130%]' : 'translate-y-0'}`}>
         <div className={`wrap flex justify-center transition-all duration-500 ${scrolled ? 'pt-3' : 'pt-5'}`}>
           <div className={`pointer-events-auto glass rounded-full flex items-center gap-1 pl-2 pr-2 transition-all duration-500 ${scrolled ? 'h-14' : 'h-16'} w-full max-w-[1120px]`}>
             <Link to="/" className="flex items-center gap-3 pl-1 pr-3" aria-label={SITE.name}>

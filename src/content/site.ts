@@ -24,38 +24,31 @@ export const SITE = {
   social: { facebook: 'https://www.facebook.com', instagram: 'https://www.instagram.com' },
 };
 
-/** Photos de démonstration (médias du site AGC, à remplacer par celles d'Ange Bleu) + vidéo de présentation */
-const CDN = 'https://cdn.prod.website-files.com/682f40cedbb46cd6e15b45cb/';
+/** Photos de l'école (Cloudinary). Optimisées à la volée : format auto, qualité auto, 1600 px max. */
+const CL = (id: string) => `https://res.cloudinary.com/ddvgp1zrz/image/upload/f_auto,q_auto,w_1600/${id}.png`;
+export const POOL = [
+  CL('v1788357788/c561c10e-d7fe-4bf9-9e23-fbeec474af26'),
+  CL('v1788357656/7d162192-ae69-478e-99b2-063fc0d21d4c'),
+  CL('v1788202449/aa176b1e-15d2-4073-9774-ecee90f41c32'),
+  CL('v1788202427/31e6bba6-92d7-43ba-969e-5cb953a51e8a'),
+  CL('v1788202258/1273bf00-164e-4607-b15f-e7b00d88f390'),
+  CL('v1788202060/5c7ae5c1-5c44-478f-9881-747a82250f4b'),
+  CL('v1788202040/d56237ea-4009-40e0-9e74-a7618c465563'),
+  CL('v1788201548/4a37c00d-dc2e-4907-b6f9-a95d3c61276c'),
+  CL('v1788201329/808a8542-8a78-4315-9e95-be80ffbc165c'),
+];
+const P = (i: number) => POOL[i % POOL.length];
+/** Emplacements → photo. Pour changer une photo, remplacez simplement l'indice ou l'adresse. */
 export const PHOTOS = {
-  classroom: CDN + '69de1b497dac963ec620e39c_Capture%20d%E2%80%99e%CC%81cran%202026-04-14%20a%CC%80%2011.45.22.png',
-  kids: CDN + '6a06436b8e9647708e2d4b94_WhatsApp%20Image%202026-03-18%20at%2000.54.42%20(2)%20-%20Copie.jpeg',
-  event: CDN + '69c1d233dc4cf99b45616f50_491777598_691096323477848_5143141736472395314_n.jpg',
-  team: CDN + '69cd5b3c8fbdc13183530b9d_team-buid%20(1).jpg',
-  canteen: CDN + '6a0641c4501289912ee5bfa9_20260408_102058.jpg',
-  library: CDN + '6a06413ec3ed04098d4bd38b_20260408_103650.jpg',
-  lab: CDN + '6a0642e35c967a63aaf11e02_20260408_111256.jpg',
-  sport: CDN + '6a09f38a9d6e7a93cd71f0cd_WhatsApp%20Image%202026-05-17%20at%2000.58.02%20(1).jpeg',
-  eco: CDN + '69de1b48468bdf68fcdab96e_Capture%20d%E2%80%99e%CC%81cran%202026-04-14%20a%CC%80%2011.44.53.png',
-  primaire: CDN + '6a0642a62888461bc238b590_20260408_105811.jpg',
-  college: CDN + '6a06426cebf90414139a75fd_WhatsApp%20Image%202026-04-08%20at%2009.29.14%20(2).jpeg',
-  lycee: CDN + '6a0642a45998583a1d309187_%23exames%20%23boncourage.webp',
-  primaire2: CDN + '6a0a087f4aa97f21b1f3439e_20260408_105726.jpg',
-  primaire3: CDN + '6a0a087cf1a88a8406ee24fc_20260408_110706.jpg',
-  college2: CDN + '6a06426f924d5314fbb6e81b_WhatsApp%20Image%202026-04-08%20at%2009.29.13%20(2).jpeg',
-  college3: CDN + '6a0b4f06dcb3815df08560c6_WhatsApp%20Image%202026-05-18%20at%2018.39.00%20(1).jpeg',
-  lycee2: CDN + '6a0642fb4fb44268106e9ccc_20260408_111637.jpg',
-  lycee3: CDN + '6a0643d414e10d71b15a3753_20260408_102646.jpg',
-  space1: CDN + '6a0641da8757c5dc7374be96_20260408_102348.jpg',
-  space2: CDN + '6a0642fe5998583a1d309c90_20260408_111431.jpg',
-  space3: CDN + '6a064206ed8364d9e0de4b63_20260408_102032.jpg',
-  space4: CDN + '6a0641a7335a4fa036c06f69_20260408_112139.avif',
-  act1: CDN + '6a079817dc033d19c3e68bb6_WhatsApp%20Image%202026-05-15%20at%2022.53.52.jpeg',
-  act2: CDN + '6a09f391f71666e4fc4fa209_WhatsApp%20Image%202026-05-17%20at%2000.58.03.jpeg',
-  act3: CDN + '6a09f38dd925870ce981901a_WhatsApp%20Image%202026-05-17%20at%2000.58.02.jpeg',
-  act4: CDN + '6a09f390456d7c60eaedd730_WhatsApp%20Image%202026-05-17%20at%2000.58.03%20(1).jpeg',
-  act5: CDN + '6a09f39167a0469d6f6065ae_WhatsApp%20Image%202026-05-17%20at%2000.58.03%20(2).jpeg',
-  maternelle: CDN + '6a06431c03ee9b32184c769e_20260408_104421%20-%20Copie.jpg',
-  presco: CDN + '6a0643698b957947262c740e_prescolaire4.jpg',
+  transport: CL('v1788182124/1d1e503a-d637-4d22-979c-3ea75d6dd72e'),
+  canteen: CL('v1788182204/3c2976c8-9e2d-4f5c-89fa-779d3d36227d'),
+  classroom: P(0), kids: P(1), event: P(2), team: P(3), library: P(4), lab: P(5), sport: P(6), eco: P(7),
+  primaire: P(8), primaire2: P(0), primaire3: P(1),
+  college: P(2), college2: P(3), college3: P(4),
+  lycee: P(5), lycee2: P(6), lycee3: P(7),
+  space1: P(8), space2: P(0), space3: P(1), space4: P(2),
+  act1: P(3), act2: P(4), act3: P(5), act4: P(6), act5: P(7),
+  maternelle: P(8), presco: P(0),
 };
 export const VIDEO = 'https://res.cloudinary.com/ddvgp1zrz/video/upload/v1779369814/presentation_q1lmet.mp4';
 export const IMG = { emblem, monogramme, monogrammeBlanc, logoComplet, campus };
@@ -376,4 +369,4 @@ export const ENGAGEMENTS = [
   { title: 'Réactivité', text: 'Aucune question de parent ne reste sans réponse plus de 48 heures. La direction reçoit sans rendez-vous le samedi matin.' },
 ];
 
-export const GALLERY_CAPTIONS = ['La cour principale', 'Laboratoire de physique', 'Bibliothèque trilingue', 'Terrain de sport', 'Salle de classe', 'Cantine', 'Atelier robotique', 'Remise des prix'];
+export const GALLERY_CAPTIONS = ['', '', '', '', '', '', '', '', '', 'La cantine', 'Le transport scolaire'];

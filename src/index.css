@@ -101,6 +101,7 @@
   .marquee-wrap { display: flex; overflow: hidden; }
   .marquee { display: flex; width: max-content; animation: marquee var(--marquee-duration, 40s) linear infinite; }
   .marquee-wrap:hover .marquee { animation-play-state: paused; }
+  .marquee.reverse { animation-direction: reverse; }
 
   /* Halo (anneau doré du logo) */
   .halo { animation: halo-float 7s ease-in-out infinite; }
@@ -114,3 +115,17 @@
 @keyframes loader-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes blob { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(4%, -6%) scale(1.08); } 66% { transform: translate(-5%, 4%) scale(0.95); } }
 .blob { animation: blob 18s ease-in-out infinite; }
+
+/* Ciel : étoiles, étoiles filantes, nuit */
+@keyframes twinkle { 0%, 100% { opacity: 0.25; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.25); } }
+.twinkle { animation: twinkle 4s ease-in-out infinite; }
+@keyframes shoot { 0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; } 5% { opacity: 1; } 30% { transform: translate(-320px, 220px) rotate(-35deg); opacity: 0; } 100% { transform: translate(-320px, 220px) rotate(-35deg); opacity: 0; } }
+.shooting { position: absolute; width: 140px; height: 2px; background: linear-gradient(90deg, rgba(255,255,255,0), #fff, rgba(244,210,122,0.9)); border-radius: 999px; animation: shoot 12s linear infinite; filter: drop-shadow(0 0 6px rgba(244,210,122,0.8)); }
+.night { background: radial-gradient(70% 50% at 50% 0%, #143a72 0%, rgba(20,58,114,0) 60%), radial-gradient(40% 40% at 80% 80%, rgba(46,143,223,0.35) 0%, rgba(46,143,223,0) 60%), linear-gradient(180deg, #071A33 0%, #0A2A5E 100%); }
+.on-blue .chip { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); color: #fff; }
+@keyframes glow { 0%, 100% { filter: drop-shadow(0 0 12px rgba(244,210,122,0.5)); } 50% { filter: drop-shadow(0 0 30px rgba(244,210,122,0.95)); } }
+.glow { animation: glow 3s ease-in-out infinite; }
+/* Cartes claires posées sur une section sombre */
+.on-blue .on-light { color: var(--color-deep); }
+.on-blue .on-light .t-meta { color: var(--color-mute); }
+.on-blue .on-light .chip { background: rgba(255,255,255,0.85); border-color: rgba(10,42,94,0.10); color: var(--color-azure); }

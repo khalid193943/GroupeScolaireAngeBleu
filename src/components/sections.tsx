@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform, useSpring } from 'motion/react';
 import { WordReveal, Reveal, EASE } from './ui/motion';
 import { Button, Halo } from './ui';
-import { PHOTOS, VIDEO, GALLERY_CAPTIONS } from '../content/site';
+import { PHOTOS, POOL, VIDEO, GALLERY_CAPTIONS } from '../content/site';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -27,8 +27,8 @@ export const PageHero = ({ chapter, title, lead, children }: { chapter: string; 
   return (
     <section ref={ref} className="relative mesh overflow-hidden">
       <Clouds tone="mixed" />
-      <motion.div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[560px] md:w-[760px] opacity-80 pointer-events-none" style={reduce ? undefined : { y: yHalo }}><Halo /></motion.div>
-      <motion.div className="wrap relative z-10 text-center" style={{ ...(reduce ? {} : { y: yText, opacity: fade }), paddingTop: 'calc(var(--header-h) + clamp(4rem, 9vw, 8rem))', paddingBottom: 'clamp(3.5rem, 7vw, 6rem)' }}>
+      <motion.div className="absolute top-[calc(var(--header-h)+1.5rem)] left-1/2 -translate-x-1/2 w-[200px] md:w-[260px] pointer-events-none" style={reduce ? undefined : { y: yHalo }} aria-hidden><Halo /></motion.div>
+      <motion.div className="wrap relative z-10 text-center" style={{ ...(reduce ? {} : { y: yText, opacity: fade }), paddingTop: 'calc(var(--header-h) + clamp(6rem, 11vw, 9.5rem))', paddingBottom: 'clamp(3.5rem, 7vw, 6rem)' }}>
         <motion.p className="chip mb-7" initial={reduce ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>{chapter}</motion.p>
         <h1 className="t-display max-w-[18ch] mx-auto"><WordReveal text={title} inView={false} delay={0.1} /></h1>
         {lead && <motion.p className="t-lead text-mute max-w-[56ch] mx-auto mt-6" initial={reduce ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5, ease: EASE }}>{lead}</motion.p>}
@@ -40,6 +40,7 @@ export const PageHero = ({ chapter, title, lead, children }: { chapter: string; 
 
 export const SectionHead = ({ chapter, title, lead, center = false, light = false, className = '', link }: { chapter: string; title: string; lead?: string; center?: boolean; light?: boolean; className?: string; link?: { label: string; to: string } }) => (
   <div className={`max-w-[760px] ${center ? 'mx-auto text-center' : ''} ${className}`}>
+    <div className={`w-[110px] mb-2 ${center ? 'mx-auto' : ''}`} aria-hidden><Halo className="w-full" /></div>
     <p className="chip mb-6">{chapter}</p>
     <h2 className={`t-h2 ${light ? 'text-white' : ''}`}><WordReveal text={title} /></h2>
     {lead && <Reveal delay={0.1}><p className={`t-body mt-5 max-w-[56ch] ${center ? 'mx-auto' : ''} ${light ? 'text-white/80' : 'text-mute'}`}>{lead}</p></Reveal>}
@@ -77,7 +78,7 @@ export const CardGrid = ({ items, icons, photos, cols = 3 }: { items: { title: s
 );
 
 /* Bande de photos qui défile */
-export const PhotoStrip = ({ photos = [PHOTOS.classroom, PHOTOS.lab, PHOTOS.library, PHOTOS.sport, PHOTOS.kids, PHOTOS.canteen, PHOTOS.act1, PHOTOS.event], captions = GALLERY_CAPTIONS }: { photos?: string[]; captions?: string[] }) => {
+export const PhotoStrip = ({ photos = [...POOL, PHOTOS.canteen, PHOTOS.transport], captions = GALLERY_CAPTIONS }: { photos?: string[]; captions?: string[] }) => {
   const row = photos.map((ph, i) => (
     <figure key={i} className="w-[300px] md:w-[380px] shrink-0 rounded-[var(--r)] overflow-hidden bg-sky-2 relative aspect-[4/3]">
       <img src={ph} alt={captions[i] || ''} loading="lazy" className="w-full h-full object-cover" />
